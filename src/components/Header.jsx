@@ -19,6 +19,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const location = useLocation()
 
   useEffect(() => {
@@ -32,6 +33,7 @@ export default function Header() {
   useEffect(() => {
     setMobileOpen(false)
     setServicesOpen(false)
+    setMobileServicesOpen(false)
   }, [location.pathname])
 
   // Lock body scroll when mobile menu open
@@ -167,59 +169,103 @@ export default function Header() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 top-[72px] z-40 overflow-y-auto bg-cream-100 lg:hidden"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 top-[72px] z-40 flex flex-col bg-cream-100 lg:hidden"
           >
-            <nav className="container-px flex flex-col gap-1 py-6">
-              {nav.map((item) => (
-                <div key={item.to}>
+            {/* Scrollable nav */}
+            <nav className="container-px flex-1 overflow-y-auto py-2">
+              {nav.map((item) =>
+                item.dropdown ? (
+                  <div key={item.to} className="border-b border-cream-300/70">
+                    <button
+                      type="button"
+                      onClick={() => setMobileServicesOpen((v) => !v)}
+                      aria-expanded={mobileServicesOpen}
+                      className="flex w-full items-center justify-between py-4 font-display text-xl font-semibold text-teal-900"
+                    >
+                      Services
+                      <span
+                        className={`flex h-8 w-8 items-center justify-center rounded-full bg-cream-200 text-teal-900 transition-transform duration-300 ${
+                          mobileServicesOpen ? 'rotate-90' : ''
+                        }`}
+                      >
+                        <Icon name="arrow" className="h-4 w-4 rotate-90" strokeWidth={2} />
+                      </span>
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {mobileServicesOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <div className="flex flex-col gap-0.5 pb-3">
+                            <Link
+                              to="/services"
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-brass-600 hover:bg-cream-200"
+                            >
+                              <Icon name="arrowUpRight" className="h-4 w-4" /> All Services
+                            </Link>
+                            {services.map((s) => (
+                              <Link
+                                key={s.slug}
+                                to={`/services#${s.slug}`}
+                                className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-teal-900/75 hover:bg-cream-200"
+                              >
+                                <Icon name={s.icon} className="h-5 w-5 shrink-0 text-brass-600" strokeWidth={1.6} />
+                                {s.title.split(' (')[0]}
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
                   <NavLink
+                    key={item.to}
                     to={item.to}
                     end={item.to === '/'}
                     className={({ isActive }) =>
-                      `block border-b border-cream-300 py-4 font-display text-2xl font-semibold ${
+                      `flex items-center justify-between border-b border-cream-300/70 py-4 font-display text-xl font-semibold transition-colors ${
                         isActive ? 'text-brass-600' : 'text-teal-900'
                       }`
                     }
                   >
                     {item.label}
+                    <Icon name="arrow" className="h-4 w-4 text-teal-900/25" strokeWidth={2} />
                   </NavLink>
-                  {item.dropdown && (
-                    <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-2">
-                      {services.map((s) => (
-                        <Link
-                          key={s.slug}
-                          to={`/services#${s.slug}`}
-                          className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-teal-900/80 hover:bg-cream-200"
-                        >
-                          <Icon name={s.icon} className="h-5 w-5 text-brass-600" />
-                          {s.title.split(' (')[0]}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+                ),
+              )}
+            </nav>
 
-              <div className="mt-4 flex flex-col gap-3">
+            {/* Pinned CTA footer */}
+            <div className="container-px shrink-0 border-t border-cream-300 bg-cream-50 py-5">
+              <div className="flex flex-col gap-3">
                 <Link to="/contact" className="btn-primary w-full">
                   Get a Free Consultation
                 </Link>
                 <a href={whatsappLink()} target="_blank" rel="noreferrer" className="btn-ghost w-full">
                   <Icon name="whatsapp" className="h-4 w-4" /> WhatsApp Us
                 </a>
-                <div className="mt-2 flex flex-col gap-1">
-                  {site.phones.map((p) => (
-                    <a key={p.value} href={`tel:${p.value}`} className="flex items-center gap-2 py-1 text-sm font-medium text-teal-900">
-                      <Icon name="phone" className="h-4 w-4 text-brass-600" /> {p.label}
-                    </a>
-                  ))}
-                </div>
               </div>
-            </nav>
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5">
+                {site.phones.map((p) => (
+                  <a
+                    key={p.value}
+                    href={`tel:${p.value}`}
+                    className="flex items-center gap-2 text-sm font-medium text-teal-900"
+                  >
+                    <Icon name="phone" className="h-4 w-4 text-brass-600" /> {p.label}
+                  </a>
+                ))}
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
