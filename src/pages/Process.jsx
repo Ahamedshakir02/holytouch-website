@@ -32,7 +32,7 @@ export default function Process() {
       />
 
       {/* Vertical timeline */}
-      <section className="bg-cream-100 py-20 sm:py-28">
+      <section className="bg-cream-100 section-y">
         <div className="container-px">
           <div className="relative mx-auto max-w-3xl">
             {/* center line */}
@@ -72,7 +72,7 @@ export default function Process() {
       </section>
 
       {/* What you get / value props */}
-      <section className="bg-teal-950 py-20 text-cream-100 sm:py-28">
+      <section className="section-y bg-teal-950 text-cream-100">
         <div className="container-px">
           <SectionHeading
             light

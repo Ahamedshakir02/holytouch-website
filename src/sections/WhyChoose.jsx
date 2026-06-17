@@ -10,8 +10,8 @@ const IMG =
 
 export default function WhyChoose() {
   return (
-    <section className="bg-cream-100 py-20 sm:py-28">
-      <div className="container-px grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+    <section className="section-y bg-cream-100">
+      <div className="container-px grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
         {/* Image side */}
         <Reveal className="relative">
           <div className="overflow-hidden rounded-3xl">
@@ -34,11 +34,11 @@ export default function WhyChoose() {
         {/* Content side */}
         <div>
           <Reveal>
-            <span className="eyebrow text-brass-600">Why choose Holytouch</span>
-            <h2 className="mt-4 text-balance font-display text-3xl font-bold leading-[1.1] text-teal-900 sm:text-4xl lg:text-[2.75rem]">
+            <span className="eyebrow text-brass-600"><span className="tabular-nums opacity-60">(03)</span> Why choose Holytouch</span>
+            <h2 className="mt-5 text-balance font-display text-display-lg font-bold text-teal-900">
               A partner you can build your future on
             </h2>
-            <p className="mt-5 text-lg leading-relaxed text-teal-900/65">
+            <p className="mt-5 text-lg leading-relaxed text-teal-900/60">
               We bring every discipline together so your project is simpler, safer and genuinely
               enjoyable to build — in {site.location} and beyond.
             </p>
@@ -47,12 +47,12 @@ export default function WhyChoose() {
           <div className="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-2">
             {whyChoose.map((w, i) => (
               <Reveal key={w.title} delay={i * 0.08} className="flex gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brass-100 text-brass-600">
-                  <Icon name={w.icon} className="h-6 w-6" />
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brass-500/10 text-brass-600">
+                  <Icon name={w.icon} className="h-6 w-6" strokeWidth={1.5} />
                 </span>
                 <div>
                   <h3 className="font-display text-base font-semibold text-teal-900">{w.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-teal-900/60">{w.text}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-teal-900/55">{w.text}</p>
                 </div>
               </Reveal>
             ))}

@@ -33,11 +33,11 @@ export default function About() {
       />
 
       {/* Story */}
-      <section className="bg-cream-100 py-20 sm:py-28">
+      <section className="bg-cream-100 section-y">
         <div className="container-px grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal className="order-2 lg:order-1">
             <span className="eyebrow text-brass-600">Our story</span>
-            <h2 className="mt-4 font-display text-3xl font-bold leading-[1.1] text-teal-900 sm:text-4xl">
+            <h2 className="mt-5 font-display text-display-lg font-bold text-teal-900">
               One firm, every stage of your build
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-teal-900/70">
@@ -75,7 +75,7 @@ export default function About() {
       </section>
 
       {/* Mission / Vision */}
-      <section className="bg-teal-950 py-20 text-cream-100 sm:py-28">
+      <section className="section-y bg-teal-950 text-cream-100">
         <div className="container-px grid grid-cols-1 gap-6 md:grid-cols-2">
           {[
             {
@@ -113,7 +113,7 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="bg-cream-100 py-20 sm:py-28">
+      <section className="bg-cream-100 section-y">
         <div className="container-px">
           <SectionHeading
             align="center"
@@ -136,7 +136,7 @@ export default function About() {
       </section>
 
       {/* Trust differentiators */}
-      <section className="bg-cream-200 py-20 sm:py-28">
+      <section className="bg-cream-200 section-y">
         <div className="container-px">
           <SectionHeading
             eyebrow="The trust difference"

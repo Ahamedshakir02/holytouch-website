@@ -1,10 +1,11 @@
 import Reveal from './Reveal'
 
-// Consistent section header: eyebrow + title + optional intro.
+// Consistent section header: optional index + eyebrow + title + optional intro.
 export default function SectionHeading({
   eyebrow,
   title,
   intro,
+  index,
   align = 'left',
   light = false,
   className = '',
@@ -12,18 +13,21 @@ export default function SectionHeading({
   const alignCls = align === 'center' ? 'items-center text-center mx-auto' : 'items-start text-left'
   return (
     <Reveal className={`flex max-w-2xl flex-col ${alignCls} ${className}`}>
-      {eyebrow && (
-        <span className={`eyebrow ${light ? 'text-brass-300' : 'text-brass-600'}`}>{eyebrow}</span>
+      {(eyebrow || index) && (
+        <span className={`eyebrow ${light ? 'text-brass-300' : 'text-brass-600'}`}>
+          {index && <span className="tabular-nums opacity-60">{index}</span>}
+          {eyebrow}
+        </span>
       )}
       <h2
-        className={`mt-4 text-balance font-display text-3xl font-bold leading-[1.1] sm:text-4xl lg:text-[2.75rem] ${
+        className={`mt-5 text-balance font-display text-display-lg font-bold ${
           light ? 'text-cream-100' : 'text-teal-900'
         }`}
       >
         {title}
       </h2>
       {intro && (
-        <p className={`mt-5 text-base leading-relaxed sm:text-lg ${light ? 'text-cream-100/70' : 'text-teal-900/65'}`}>
+        <p className={`mt-5 text-base leading-relaxed sm:text-lg ${light ? 'text-cream-100/70' : 'text-teal-900/60'}`}>
           {intro}
         </p>
       )}

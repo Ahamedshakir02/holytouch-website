@@ -14,10 +14,10 @@ export default function CtaBand() {
       <div className="absolute inset-0 bg-teal-950/85" />
       <div className="pointer-events-none absolute inset-0 bg-grain opacity-[0.06]" />
 
-      <div className="container-px relative py-20 sm:py-28">
+      <div className="container-px section-y relative">
         <Reveal className="mx-auto max-w-3xl text-center">
           <span className="eyebrow justify-center text-brass-300">Let's begin</span>
-          <h2 className="mt-5 text-balance font-display text-3xl font-bold leading-[1.1] text-cream-100 sm:text-5xl">
+          <h2 className="mt-5 text-balance font-display text-display-lg font-bold text-cream-100">
             Let's Build Something Extraordinary
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-cream-100/75">

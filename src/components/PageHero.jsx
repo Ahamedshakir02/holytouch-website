@@ -33,11 +33,11 @@ export default function PageHero({ eyebrow, title, intro, image, breadcrumb }) {
             </nav>
           )}
           {eyebrow && <span className="eyebrow text-brass-300">{eyebrow}</span>}
-          <h1 className="mt-4 text-balance font-display text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
+          <h1 className="mt-5 text-balance font-display text-display-xl font-bold">
             {title}
           </h1>
           {intro && (
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-cream-100/75">{intro}</p>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-cream-100/70">{intro}</p>
           )}
         </motion.div>
       </div>

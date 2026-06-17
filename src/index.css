@@ -15,6 +15,7 @@
 
   body {
     @apply bg-cream-100 text-teal-900 font-sans antialiased;
+    overflow-x: hidden; /* guard against decorative off-canvas elements on small screens */
   }
 
   h1, h2, h3, h4, h5 {
@@ -38,22 +39,32 @@
 
 @layer components {
   .container-px {
-    @apply mx-auto w-full max-w-container px-5 sm:px-8 lg:px-10;
+    @apply mx-auto w-full max-w-container px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Consistent vertical rhythm for sections */
+  .section-y {
+    @apply py-20 sm:py-28 lg:py-32;
   }
 
   /* Eyebrow / kicker label used across sections */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em];
+    @apply inline-flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.24em];
   }
 
   .eyebrow::before {
     content: '';
-    @apply inline-block h-px w-8 bg-brass-500;
+    @apply inline-block h-px w-7 bg-brass-500;
   }
 
-  /* Buttons */
+  /* Hairline divider — architectural detail */
+  .hairline {
+    @apply h-px w-full bg-teal-900/10;
+  }
+
+  /* Buttons — refined, slightly lighter weight */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass-500 focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold tracking-tight transition-all duration-300 ease-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass-500 focus-visible:ring-offset-2;
   }
 
   .btn-primary {

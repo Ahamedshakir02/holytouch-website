@@ -10,10 +10,11 @@ export default function Testimonials() {
   const go = (dir) => setI((prev) => (prev + dir + testimonials.length) % testimonials.length)
 
   return (
-    <section className="bg-cream-100 py-20 sm:py-28">
+    <section className="section-y bg-cream-100">
       <div className="container-px">
         <SectionHeading
           align="center"
+          index="(05)"
           eyebrow="Client stories"
           title="Trusted by homeowners across Kerala"
           intro="Placeholder testimonials — replace with real client quotes and names."
@@ -31,7 +32,7 @@ export default function Testimonials() {
                 exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.4 }}
               >
-                <p className="text-balance font-display text-xl font-medium leading-relaxed text-teal-900 sm:text-2xl">
+                <p className="text-balance font-display text-display-md font-medium leading-snug text-teal-900">
                   "{t.quote}"
                 </p>
                 <footer className="mt-6">

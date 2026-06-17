@@ -7,10 +7,11 @@ import { projects } from '../data/projects'
 export default function FeaturedProjects() {
   const featured = projects.slice(0, 5)
   return (
-    <section className="bg-cream-200 py-20 sm:py-28">
+    <section className="section-y bg-cream-200">
       <div className="container-px">
-        <div className="flex flex-col items-end justify-between gap-6 md:flex-row">
+        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading
+            index="(04)"
             eyebrow="Featured work"
             title="Proof of work, not just promises"
             intro="A glimpse of homes and spaces we've brought to life across Kerala. Swap these placeholders for your real project photography."
@@ -23,7 +24,7 @@ export default function FeaturedProjects() {
         </div>
 
         {/* Asymmetric feature grid */}
-        <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-3">
           {/* Large first card */}
           <Reveal className="md:col-span-2 md:row-span-2">
             <FeatureCard project={featured[0]} large />

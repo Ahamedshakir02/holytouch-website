@@ -39,7 +39,7 @@ export default function Contact() {
         image={HERO}
       />
 
-      <section className="bg-cream-100 py-20 sm:py-24">
+      <section className="bg-cream-100 section-y">
         <div className="container-px grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-16">
           {/* Form */}
           <Reveal className="lg:col-span-3">

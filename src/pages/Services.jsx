@@ -38,7 +38,7 @@ export default function Services() {
       />
 
       {/* Overview grid */}
-      <section className="bg-cream-100 py-20 sm:py-24">
+      <section className="bg-cream-100 section-y">
         <div className="container-px">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s, i) => (
@@ -90,7 +90,7 @@ export default function Services() {
                     <Icon name={s.icon} className="h-6 w-6" />
                   </span>
                   <span className="eyebrow mt-5 text-brass-600">{`0${i + 1} — Service`}</span>
-                  <h2 className="mt-3 font-display text-3xl font-bold leading-[1.1] text-teal-900 sm:text-4xl">
+                  <h2 className="mt-3 font-display text-display-md font-bold text-teal-900">
                     {s.title}
                   </h2>
                   <p className="mt-5 text-base leading-relaxed text-teal-900/70">{s.description}</p>

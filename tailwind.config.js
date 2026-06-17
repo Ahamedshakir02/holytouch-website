@@ -39,12 +39,23 @@ export default {
         tightest: '-0.04em',
       },
       maxWidth: {
-        container: '1240px',
+        container: '1280px',
+      },
+      // Fluid display sizes — scale smoothly from small phones to large screens.
+      fontSize: {
+        'display-xl': ['clamp(2.4rem, 6.5vw, 5rem)', { lineHeight: '1.02', letterSpacing: '-0.035em' }],
+        'display-lg': ['clamp(2rem, 4.6vw, 3.25rem)', { lineHeight: '1.07', letterSpacing: '-0.03em' }],
+        'display-md': ['clamp(1.6rem, 3.2vw, 2.25rem)', { lineHeight: '1.12', letterSpacing: '-0.02em' }],
+        'display-sm': ['clamp(1.3rem, 2.4vw, 1.6rem)', { lineHeight: '1.2', letterSpacing: '-0.015em' }],
       },
       boxShadow: {
-        soft: '0 20px 50px -20px rgba(10, 33, 29, 0.25)',
-        card: '0 24px 60px -28px rgba(10, 33, 29, 0.35)',
-        brass: '0 14px 40px -14px rgba(194, 161, 90, 0.55)',
+        // Softer, more minimal elevation
+        soft: '0 16px 40px -24px rgba(10, 33, 29, 0.18)',
+        card: '0 28px 64px -40px rgba(10, 33, 29, 0.26)',
+        brass: '0 12px 34px -16px rgba(194, 161, 90, 0.45)',
+      },
+      transitionTimingFunction: {
+        smooth: 'cubic-bezier(0.22, 1, 0.36, 1)',
       },
       backgroundImage: {
         'grain': "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E\")",
