@@ -138,7 +138,7 @@ export default function Header() {
           <div className="flex items-center gap-3 justify-self-end">
             <a
               href={`tel:${site.phones[0].value}`}
-              className={`hidden items-center gap-2 text-sm font-semibold transition-colors xl:flex ${
+              className={`hidden items-center gap-2 whitespace-nowrap text-sm font-semibold transition-colors xl:flex ${
                 scrolled ? 'text-teal-900 hover:text-brass-600' : 'text-cream-100 hover:text-brass-300'
               }`}
             >

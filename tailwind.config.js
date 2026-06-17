@@ -39,7 +39,7 @@ export default {
         tightest: '-0.04em',
       },
       maxWidth: {
-        container: '1280px',
+        container: '1400px',
       },
       // Fluid display sizes — scale smoothly from small phones to large screens.
       fontSize: {
