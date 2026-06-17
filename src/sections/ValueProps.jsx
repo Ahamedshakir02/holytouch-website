@@ -5,8 +5,8 @@ import { valueProps, stats } from '../data/content'
 export default function ValueProps() {
   return (
     <section className="relative z-10 bg-cream-100">
-      <div className="container-px -mt-14 sm:-mt-20">
-        {/* Floating value-prop card overlapping the hero */}
+      <div className="container-px section-y">
+        {/* Value-prop card */}
         <div className="overflow-hidden rounded-2xl border border-teal-900/10 shadow-card">
           <div className="grid grid-cols-1 gap-px bg-teal-900/10 sm:grid-cols-2 lg:grid-cols-4">
             {valueProps.map((v, i) => (
@@ -29,7 +29,7 @@ export default function ValueProps() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 py-16 sm:py-20 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 sm:mt-20 lg:grid-cols-4">
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.08} className="border-l border-teal-900/10 pl-5">
               <p className="font-display text-4xl font-bold tracking-tightest text-teal-900 sm:text-5xl">

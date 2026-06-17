@@ -25,8 +25,8 @@ export default function Hero() {
   const scale = useTransform(scrollYProgress, [0, 1], [1.04, reduce ? 1.04 : 1.16])
 
   return (
-    <section ref={ref} className="relative flex h-[100svh] min-h-[600px] flex-col overflow-hidden bg-teal-950">
-      {/* Parallax image */}
+    <section ref={ref} className="relative flex min-h-[100svh] flex-col overflow-hidden bg-teal-950">
+      {/* Parallax image — covers the full first screen */}
       <motion.div style={{ y, scale }} className="absolute inset-0">
         <img
           src={HERO_IMG}
@@ -40,7 +40,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-tr from-teal-950 via-teal-950/70 to-teal-950/25" />
 
       {/* Main content */}
-      <div className="container-px relative flex flex-1 items-end pb-10 pt-[72px] sm:items-center sm:pb-0">
+      <div className="container-px relative flex flex-1 items-center pb-8 pt-28 sm:pb-0 sm:pt-[72px]">
         <div className="max-w-3xl">
           <motion.span
             initial={{ opacity: 0, y: 16 }}
@@ -89,14 +89,14 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom hairline meta bar — architectural detail, fluid + responsive */}
+      {/* Bottom hairline meta bar — architectural detail, anchors the hero base */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         className="relative border-t border-cream-100/15"
       >
-        <div className="container-px flex items-center justify-between py-5">
+        <div className="container-px flex items-center justify-between gap-6 py-5">
           <ul className="flex flex-wrap items-center gap-x-7 gap-y-1 sm:gap-x-10">
             {meta.map((m) => (
               <li key={m.k} className="flex items-baseline gap-2.5">
@@ -105,18 +105,9 @@ export default function Hero() {
               </li>
             ))}
           </ul>
-
-          {/* Scroll cue (desktop) */}
-          <div className="hidden items-center gap-3 text-cream-100/45 md:flex">
-            <span className="text-[0.7rem] uppercase tracking-[0.3em]">Scroll</span>
-            <span className="flex h-9 w-5 items-start justify-center rounded-full border border-cream-100/25 p-1">
-              <motion.span
-                animate={{ y: [0, 9, 0] }}
-                transition={{ duration: 1.7, repeat: Infinity }}
-                className="h-1.5 w-1.5 rounded-full bg-brass-400"
-              />
-            </span>
-          </div>
+          <p className="hidden text-sm font-medium text-cream-100/55 lg:block">
+            Built on Trust, Delivered with Pride.
+          </p>
         </div>
       </motion.div>
     </section>
