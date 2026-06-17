@@ -37,11 +37,11 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container-px grid grid-cols-1 gap-12 py-14 sm:grid-cols-2 lg:grid-cols-12">
+      <div className="container-px grid grid-cols-1 gap-x-10 gap-y-12 py-14 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
         {/* Brand */}
-        <div className="lg:col-span-4">
+        <div className="sm:col-span-2 lg:col-span-1">
           <Logo variant="light" />
-          <p className="mt-5 max-w-xs text-sm leading-relaxed">
+          <p className="mt-5 max-w-xs text-sm leading-relaxed lg:max-w-none">
             End-to-end construction & design solutions in {site.location}. From concept to handover —
             built on trust, delivered with pride.
           </p>
@@ -65,7 +65,7 @@ export default function Footer() {
         </div>
 
         {/* Quick links */}
-        <div className="lg:col-span-2">
+        <div>
           <h3 className="text-sm font-semibold uppercase tracking-wider text-cream-100">Explore</h3>
           <ul className="mt-5 space-y-3 text-sm">
             {quickLinks.map((l) => (
@@ -79,7 +79,7 @@ export default function Footer() {
         </div>
 
         {/* Services */}
-        <div className="lg:col-span-3">
+        <div>
           <h3 className="text-sm font-semibold uppercase tracking-wider text-cream-100">Services</h3>
           <ul className="mt-5 space-y-3 text-sm">
             {services.map((s) => (
@@ -93,7 +93,7 @@ export default function Footer() {
         </div>
 
         {/* Contact */}
-        <div className="lg:col-span-3">
+        <div>
           <h3 className="text-sm font-semibold uppercase tracking-wider text-cream-100">Get in touch</h3>
           <ul className="mt-5 space-y-3 text-sm">
             {site.phones.map((p) => (

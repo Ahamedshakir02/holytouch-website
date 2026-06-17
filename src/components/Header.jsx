@@ -49,11 +49,13 @@ export default function Header() {
       }`}
     >
       <div className="container-px">
-        <div className="flex h-[72px] items-center justify-between gap-4">
-          <Logo variant={scrolled ? 'dark' : 'light'} />
+        <div className="grid h-[72px] grid-cols-[1fr_auto_1fr] items-center gap-4">
+          <div className="justify-self-start">
+            <Logo variant={scrolled ? 'dark' : 'light'} />
+          </div>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="hidden items-center gap-1 justify-self-center lg:flex">
             {nav.map((item) =>
               item.dropdown ? (
                 <div
@@ -133,7 +135,7 @@ export default function Header() {
             )}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 justify-self-end">
             <a
               href={`tel:${site.phones[0].value}`}
               className={`hidden items-center gap-2 text-sm font-semibold transition-colors xl:flex ${

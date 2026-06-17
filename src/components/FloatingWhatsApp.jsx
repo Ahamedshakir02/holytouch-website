@@ -8,10 +8,12 @@ import { whatsappLink } from '../data/site'
 // screen, and hides again at the top. Consistent on every page (all heroes are 100svh).
 export default function FloatingWhatsApp() {
   const reduce = useReducedMotion()
-  const [visible, setVisible] = useState(false)
+  const [pastHero, setPastHero] = useState(false)
+  const [atFooter, setAtFooter] = useState(false)
 
+  // Reveal only after the full-screen hero is scrolled past.
   useEffect(() => {
-    const update = () => setVisible(window.scrollY > window.innerHeight * 0.85)
+    const update = () => setPastHero(window.scrollY > window.innerHeight * 0.85)
     update() // honour current scroll position (deep links / refresh)
     window.addEventListener('scroll', update, { passive: true })
     window.addEventListener('resize', update)
@@ -20,6 +22,20 @@ export default function FloatingWhatsApp() {
       window.removeEventListener('resize', update)
     }
   }, [])
+
+  // Hide once the footer comes into view so it never overlaps footer text.
+  useEffect(() => {
+    const footer = document.querySelector('footer')
+    if (!footer) return
+    const io = new IntersectionObserver(
+      ([entry]) => setAtFooter(entry.isIntersecting),
+      { threshold: 0.01 },
+    )
+    io.observe(footer)
+    return () => io.disconnect()
+  }, [])
+
+  const visible = pastHero && !atFooter
 
   return (
     <motion.a
