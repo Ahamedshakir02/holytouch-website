@@ -1,5 +1,6 @@
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
+import CountUp from '../components/CountUp'
 import { valueProps, stats } from '../data/content'
 
 export default function ValueProps() {
@@ -33,7 +34,7 @@ export default function ValueProps() {
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.08} className="border-l border-teal-900/10 pl-5">
               <p className="font-display text-4xl font-bold tracking-tightest text-teal-900 sm:text-5xl">
-                {s.value}
+                <CountUp value={s.value} />
               </p>
               <p className="mt-2 text-sm text-teal-900/55">{s.label}</p>
             </Reveal>

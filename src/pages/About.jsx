@@ -4,6 +4,7 @@ import SectionHeading from '../components/SectionHeading'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 import CtaBand from '../sections/CtaBand'
+import CountUp from '../components/CountUp'
 import { whyChoose, stats } from '../data/content'
 import { site } from '../data/site'
 
@@ -105,7 +106,9 @@ export default function About() {
         <div className="container-px grid grid-cols-2 gap-8 lg:grid-cols-4">
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.08} className="text-center">
-              <p className="font-display text-4xl font-bold text-brass-600 sm:text-5xl">{s.value}</p>
+              <p className="font-display text-4xl font-bold text-brass-600 sm:text-5xl">
+                <CountUp value={s.value} />
+              </p>
               <p className="mt-2 text-sm text-teal-900/60">{s.label}</p>
             </Reveal>
           ))}
