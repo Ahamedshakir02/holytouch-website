@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-cream-100 text-teal-900 font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-display tracking-tightest;
+  }
+
+  ::selection {
+    @apply bg-brass-500 text-teal-950;
+  }
+
+  /* Honour users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-container px-5 sm:px-8 lg:px-10;
+  }
+
+  /* Eyebrow / kicker label used across sections */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em];
+  }
+
+  .eyebrow::before {
+    content: '';
+    @apply inline-block h-px w-8 bg-brass-500;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brass-500 focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-brass-500 text-teal-950 hover:bg-brass-400 hover:shadow-brass hover:-translate-y-0.5;
+  }
+
+  .btn-dark {
+    @apply btn bg-teal-900 text-cream-100 hover:bg-teal-800 hover:-translate-y-0.5;
+  }
+
+  .btn-ghost {
+    @apply btn border border-teal-900/20 text-teal-900 hover:border-brass-500 hover:text-brass-600;
+  }
+
+  .btn-ghost-light {
+    @apply btn border border-cream-100/30 text-cream-100 hover:border-brass-500 hover:text-brass-300;
+  }
+
+  .link-underline {
+    @apply relative inline-flex items-center gap-1.5 font-semibold text-brass-600 transition-colors hover:text-brass-700;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:-translate-y-1 hover:shadow-card;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
