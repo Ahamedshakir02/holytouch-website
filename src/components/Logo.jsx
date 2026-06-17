@@ -39,7 +39,7 @@ export default function Logo({ variant = 'dark', className = '' }) {
         <span className={`font-display text-lg font-bold tracking-tightest ${wordColor}`}>
           Holytouch
         </span>
-        <span className={`mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${subColor}`}>
+        <span className={`mt-1 whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.22em] ${subColor}`}>
           Your Perfect Builder
         </span>
       </span>

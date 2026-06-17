@@ -51,7 +51,7 @@ export default function Header() {
       }`}
     >
       <div className="container-px">
-        <div className="grid h-[72px] grid-cols-[1fr_auto_1fr] items-center gap-4">
+        <div className="flex h-[72px] items-center justify-between gap-4 lg:grid lg:grid-cols-[1fr_auto_1fr]">
           <div className="justify-self-start">
             <Logo variant={scrolled ? 'dark' : 'light'} />
           </div>
