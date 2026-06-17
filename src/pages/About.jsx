@@ -8,7 +8,8 @@ import CountUp from '../components/CountUp'
 import { whyChoose, stats } from '../data/content'
 import { site } from '../data/site'
 
-const HERO = 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1920&q=80'
+// Construction site — building under construction (swap for a real Holytouch site photo).
+const HERO = 'https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?auto=format&fit=crop&w=1920&q=80'
 const STORY_IMG = 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1100&q=80'
 
 const values = [
