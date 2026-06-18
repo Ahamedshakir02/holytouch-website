@@ -20,7 +20,7 @@ npm run preview  # preview the production build
 | --- | --- | --- |
 | Deep teal-green | `teal-900 #0A211D` / `teal-950 #071A17` | Primary dark surfaces, footer, all heroes |
 | Brass / gold | `brass-500 #C2A15A` (+ `brass-300 #D9BE85`) | Accent, CTAs, icons, hairlines, indices |
-| Off-white / cream | `cream-100 #F7F4ED` (+ `cream-200` bands) | Primary light surface |
+| Off-white / cream | `cream-100 #F1EBDD` (warm paper — pulled down from near-white to cut glare) (+ `cream-200` bands) | Primary light surface |
 | Display font | **Outfit** (wide geometric) | Headings — echoes the logo's geometric mark |
 | Body font | **Inter** | Body & UI |
 
@@ -38,32 +38,44 @@ Intentionally restrained but premium. Every effect is gated by the
 `prefers-reduced-motion` guard in `index.css` (and Lenis/preloader/parallax are
 skipped entirely when reduced motion is requested).
 
-- **Brand intro preloader** — `components/Preloader.jsx`, once per session.
+- **Brand intro preloader** — `components/Preloader.jsx`, once per session (fades out).
+- **Page transitions** — `components/PageCurtain.jsx`, a branded "dip to teal" curtain
+  with the logo mark; covers the route swap so it's never a flash of cream. Wired via
+  `AnimatePresence` in `App.jsx` (content swaps under the cover, scroll resets).
 - **Smooth scrolling (Lenis)** — `hooks/useSmoothScroll.js`, driven from `App.jsx`.
 - **Full-screen hero parallax on every page** — `sections/Hero.jsx` (home) +
   `components/PageHero.jsx` (inner pages), both `min-h-[100svh]`.
 - **Scroll-reveal fades** — `components/Reveal.jsx`.
+- **Refined graphic accents** — reusable decorative primitives in `components/decor/`
+  (`BlueprintGrid`, `GlowBlob`, `ContourLines` draw-on, `Marquee`, `SectionDivider`,
+  `CornerFrame`); all `pointer-events-none`, low-opacity, reduced-motion aware.
 - **Count-up stats** — `components/CountUp.jsx` (home + About).
-- **Scroll-aware WhatsApp button** — `components/FloatingWhatsApp.jsx`.
+- **Scroll-aware WhatsApp button** — `components/FloatingWhatsApp.jsx` (hidden on the
+  hero, reveals after it, hides again as the footer arrives).
 
 ## Project structure
 
 ```
 src/
   components/   Header, Footer, Logo, Icon, Reveal, SectionHeading, PageHero (full-screen),
-                ProcessSteps, Seo, ScrollToTop, FloatingWhatsApp, Preloader, CountUp
+                ProcessSteps, Seo, ScrollToTop, FloatingWhatsApp, Preloader, PageCurtain, CountUp
+    decor/      BlueprintGrid, GlowBlob, ContourLines, Marquee, SectionDivider, CornerFrame
   sections/     Home-page sections (Hero, ValueProps, ServicesPreview, ProcessSection,
                 WhyChoose, FeaturedProjects, Testimonials, CtaBand)
   pages/        Home, About, Services, Projects, Process, Contact, NotFound
   hooks/        useSmoothScroll.js (Lenis init + shared instance accessor)
   data/         site.js, services.js, projects.js, content.js  ← edit content here
-  App.jsx       Routes + Preloader + smooth scroll
+  App.jsx       Routes + Preloader + page-transition curtain + smooth scroll
+scripts/        process_logo.py  (regenerates the transparent logo marks + favicon)
 ```
 
 ## What to replace before launch (search for these)
 
-- **Logo** — `components/Logo.jsx` is a refined leaf-in-ring **placeholder**.
-  Drop in the real supplied asset (and update `public/favicon.svg` to match).
+- **Logo** — ✅ done. The real Holytouch mark is integrated. Source uploads live in
+  `public/logo-*.png`; `scripts/process_logo.py` derives the transparent, recoloured
+  marks (`logo-mark-dark.png` for light surfaces, `logo-mark-light.png` for dark) and the
+  `favicon.png`. `components/Logo.jsx` renders the mark + the Outfit wordmark. To tweak
+  colours/sizes, edit the script and re-run `python scripts/process_logo.py`.
 - **Images** — every image marked `REPLACE` / `PLACEHOLDER` uses Unsplash. Swap for real photos.
   Hero: `sections/Hero.jsx`. Page heroes: each `pages/*.jsx` `HERO` const. Projects:
   `data/projects.js`. Services: `pages/Services.jsx`.
