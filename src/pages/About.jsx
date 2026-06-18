@@ -5,6 +5,9 @@ import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 import CtaBand from '../sections/CtaBand'
 import CountUp from '../components/CountUp'
+import BlueprintGrid from '../components/decor/BlueprintGrid'
+import GlowBlob from '../components/decor/GlowBlob'
+import CornerFrame from '../components/decor/CornerFrame'
 import { whyChoose, stats } from '../data/content'
 import { site } from '../data/site'
 
@@ -67,6 +70,7 @@ export default function About() {
               <div className="overflow-hidden rounded-3xl">
                 <img src={STORY_IMG} alt="Holytouch project in progress" className="aspect-[4/3] w-full object-cover" loading="lazy" />
               </div>
+              <CornerFrame />
               <div className="absolute -bottom-6 -left-4 rounded-2xl bg-brass-500 p-6 text-teal-950 shadow-card sm:-left-6">
                 <p className="font-display text-4xl font-bold">150+</p>
                 <p className="text-sm font-semibold">Projects delivered</p>
@@ -77,8 +81,10 @@ export default function About() {
       </section>
 
       {/* Mission / Vision */}
-      <section className="section-y bg-teal-950 text-cream-100">
-        <div className="container-px grid grid-cols-1 gap-6 md:grid-cols-2">
+      <section className="section-y relative overflow-hidden bg-teal-950 text-cream-100">
+        <BlueprintGrid variant="dark" className="opacity-[0.05]" />
+        <GlowBlob className="-right-24 top-10 h-80 w-80" />
+        <div className="container-px relative grid grid-cols-1 gap-6 md:grid-cols-2">
           {[
             {
               k: 'Our Mission',
@@ -117,8 +123,10 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="bg-cream-100 section-y">
-        <div className="container-px">
+      <section className="bg-cream-100 section-y relative overflow-hidden">
+        <BlueprintGrid className="opacity-[0.04]" />
+        <GlowBlob className="-left-28 bottom-10 h-80 w-80" />
+        <div className="container-px relative">
           <SectionHeading
             align="center"
             eyebrow="What we stand for"

@@ -1,41 +1,46 @@
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import Icon from './Icon'
+import { getLenis } from '../hooks/useSmoothScroll'
 import { whatsappLink } from '../data/site'
 
 // Persistent WhatsApp quick-action (bottom-right). Stays OFF the full-screen hero so
 // it never blocks the imagery — it reveals only once the user scrolls past the first
-// screen, and hides again at the top. Consistent on every page (all heroes are 100svh).
+// screen, and hides again as the footer arrives. Consistent on every page (all heroes
+// are 100svh). Visibility is a single deterministic calc to avoid the scroll-listener /
+// IntersectionObserver desync that left the pill stuck over the footer under Lenis.
 export default function FloatingWhatsApp() {
   const reduce = useReducedMotion()
-  const [pastHero, setPastHero] = useState(false)
-  const [atFooter, setAtFooter] = useState(false)
+  const { pathname } = useLocation()
+  const [visible, setVisible] = useState(false)
 
-  // Reveal only after the full-screen hero is scrolled past.
-  useEffect(() => {
-    const update = () => setPastHero(window.scrollY > window.innerHeight * 0.85)
-    update() // honour current scroll position (deep links / refresh)
-    window.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update)
-    return () => {
-      window.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
-    }
-  }, [])
-
-  // Hide once the footer comes into view so it never overlaps footer text.
+  // Re-bind per route so the footer reference + scroll position are re-read after each
+  // navigation (the page resets onto a fresh full-screen hero).
   useEffect(() => {
     const footer = document.querySelector('footer')
-    if (!footer) return
-    const io = new IntersectionObserver(
-      ([entry]) => setAtFooter(entry.isIntersecting),
-      { threshold: 0.01 },
-    )
-    io.observe(footer)
-    return () => io.disconnect()
-  }, [])
 
-  const visible = pastHero && !atFooter
+    const compute = () => {
+      const vh = window.innerHeight
+      const pastHero = window.scrollY > vh * 0.85
+      // Footer's top edge has entered the viewport (with an ~80px buffer so the pill
+      // never overlaps footer content) → we've reached the bottom, hide.
+      const reachedFooter = footer ? footer.getBoundingClientRect().top < vh - 80 : false
+      setVisible(pastHero && !reachedFooter)
+    }
+
+    compute() // honour current scroll position (deep links / refresh / route change)
+
+    const lenis = getLenis()
+    window.addEventListener('scroll', compute, { passive: true })
+    window.addEventListener('resize', compute)
+    lenis?.on('scroll', compute)
+    return () => {
+      window.removeEventListener('scroll', compute)
+      window.removeEventListener('resize', compute)
+      lenis?.off('scroll', compute)
+    }
+  }, [pathname])
 
   return (
     <motion.a

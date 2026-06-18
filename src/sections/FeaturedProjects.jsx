@@ -2,13 +2,15 @@ import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
 import Icon from '../components/Icon'
+import GlowBlob from '../components/decor/GlowBlob'
 import { projects } from '../data/projects'
 
 export default function FeaturedProjects() {
   const featured = projects.slice(0, 5)
   return (
-    <section className="section-y bg-cream-200">
-      <div className="container-px">
+    <section className="section-y relative overflow-hidden bg-cream-200">
+      <GlowBlob className="-right-32 top-20 h-80 w-80" />
+      <div className="container-px relative">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading
             index="(04)"
@@ -53,6 +55,9 @@ function FeatureCard({ project, large = false }) {
         loading="lazy"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-teal-950/90 via-teal-950/20 to-transparent" />
+      <span className="absolute right-5 top-5 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-cream-100 text-teal-900 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+        <Icon name="arrowUpRight" className="h-5 w-5" strokeWidth={2} />
+      </span>
       <div className="absolute inset-x-0 bottom-0 p-6">
         <span className="inline-flex rounded-full bg-brass-500/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-teal-950">
           {project.category}

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
+import ContourLines from '../components/decor/ContourLines'
+import GlowBlob from '../components/decor/GlowBlob'
 import { site, whatsappLink } from '../data/site'
 
 // REPLACE with a wide architectural hero photo.
@@ -13,6 +15,8 @@ export default function CtaBand() {
       <img src={IMG} alt="" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
       <div className="absolute inset-0 bg-teal-950/85" />
       <div className="pointer-events-none absolute inset-0 bg-grain opacity-[0.06]" />
+      <GlowBlob className="-right-24 -top-24 h-80 w-80" />
+      <ContourLines variant="dark" className="bottom-0 left-0 h-44 w-full" opacity={0.22} />
 
       <div className="container-px section-y relative">
         <Reveal className="mx-auto max-w-3xl text-center">

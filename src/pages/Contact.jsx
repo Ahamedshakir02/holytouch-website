@@ -3,6 +3,8 @@ import Seo from '../components/Seo'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
+import BlueprintGrid from '../components/decor/BlueprintGrid'
+import GlowBlob from '../components/decor/GlowBlob'
 import { site, whatsappLink } from '../data/site'
 import { services } from '../data/services'
 
@@ -39,8 +41,9 @@ export default function Contact() {
         image={HERO}
       />
 
-      <section className="bg-cream-100 section-y">
-        <div className="container-px grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-16">
+      <section className="bg-cream-100 section-y relative overflow-hidden">
+        <GlowBlob className="-right-28 top-10 h-80 w-80" />
+        <div className="container-px relative grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-16">
           {/* Form */}
           <Reveal className="lg:col-span-3">
             <div className="rounded-3xl border border-cream-300 bg-cream-50 p-7 shadow-soft sm:p-10">
@@ -163,11 +166,12 @@ export default function Contact() {
         </div>
 
         {/* Map placeholder */}
-        <div className="container-px mt-12">
+        <div className="container-px relative mt-12">
           <Reveal>
             <div className="relative flex aspect-[16/7] w-full items-center justify-center overflow-hidden rounded-3xl border border-cream-300 bg-cream-200">
               {/* MAP PLACEHOLDER — replace with an embedded Google Map iframe of your office location. */}
-              <div className="text-center">
+              <BlueprintGrid className="opacity-[0.06]" />
+              <div className="relative text-center">
                 <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-teal-900 text-brass-400">
                   <Icon name="pin" className="h-7 w-7" />
                 </span>

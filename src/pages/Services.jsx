@@ -5,6 +5,9 @@ import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 import ProcessSection from '../sections/ProcessSection'
 import CtaBand from '../sections/CtaBand'
+import BlueprintGrid from '../components/decor/BlueprintGrid'
+import GlowBlob from '../components/decor/GlowBlob'
+import CornerFrame from '../components/decor/CornerFrame'
 import { services } from '../data/services'
 
 const HERO = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80'
@@ -38,8 +41,10 @@ export default function Services() {
       />
 
       {/* Overview grid */}
-      <section className="bg-cream-100 section-y">
-        <div className="container-px">
+      <section className="bg-cream-100 section-y relative overflow-hidden">
+        <BlueprintGrid className="opacity-[0.04]" />
+        <GlowBlob className="-right-28 top-16 h-80 w-80" />
+        <div className="container-px relative">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s, i) => (
               <Reveal key={s.slug} delay={(i % 4) * 0.05}>
@@ -75,13 +80,14 @@ export default function Services() {
             >
               <div className="container-px grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
                 <Reveal className={flip ? 'lg:order-2' : ''}>
-                  <div className="overflow-hidden rounded-3xl">
+                  <div className="relative overflow-hidden rounded-3xl">
                     <img
                       src={img(serviceImages[s.slug])}
                       alt={s.title}
                       className="aspect-[4/3] w-full object-cover"
                       loading="lazy"
                     />
+                    <CornerFrame />
                   </div>
                 </Reveal>
 

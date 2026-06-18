@@ -5,6 +5,7 @@ import Logo from './Logo'
 import Icon from './Icon'
 import { services } from '../data/services'
 import { site, whatsappLink } from '../data/site'
+import { getLenis } from '../hooks/useSmoothScroll'
 
 const nav = [
   { label: 'Home', to: '/' },
@@ -36,19 +37,27 @@ export default function Header() {
     setMobileServicesOpen(false)
   }, [location.pathname])
 
-  // Lock body scroll when mobile menu open
+  // Lock scroll (and pause Lenis) while the mobile menu is open
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : ''
-    return () => (document.body.style.overflow = '')
+    const lenis = getLenis()
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'
+      lenis?.stop()
+    } else {
+      document.body.style.overflow = ''
+      lenis?.start()
+    }
+    return () => {
+      document.body.style.overflow = ''
+      lenis?.start()
+    }
   }, [mobileOpen])
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-cream-100/90 shadow-soft backdrop-blur-md'
-          : 'bg-transparent'
-      }`}
+      className={`fixed inset-x-0 top-0 transition-all duration-500 ${
+        mobileOpen ? 'z-[70]' : 'z-50'
+      } ${scrolled ? 'bg-cream-100/90 shadow-soft backdrop-blur-md' : 'bg-transparent'}`}
     >
       <div className="container-px">
         <div className="flex h-[72px] items-center justify-between gap-4 lg:grid lg:grid-cols-[1fr_auto_1fr]">
@@ -165,30 +174,47 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — full-screen overlay (scroll-independent: inset-0 + explicit 100dvh) */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 top-[72px] z-40 flex flex-col bg-cream-100 lg:hidden"
+            key="mobile-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[70] flex h-[100dvh] flex-col bg-teal-950 text-cream-100 lg:hidden"
           >
+            {/* Menu top bar */}
+            <div className="container-px flex h-[72px] shrink-0 items-center justify-between border-b border-cream-100/10">
+              <Logo variant="light" />
+              <button
+                type="button"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-cream-100/15 text-cream-100 transition-colors hover:border-brass-500 hover:text-brass-300"
+              >
+                <Icon name="close" className="h-5 w-5" strokeWidth={2} />
+              </button>
+            </div>
+
             {/* Scrollable nav */}
-            <nav className="container-px flex-1 overflow-y-auto py-2">
-              {nav.map((item) =>
+            <nav className="container-px flex-1 overflow-y-auto py-3">
+              {nav.map((item, i) =>
                 item.dropdown ? (
-                  <div key={item.to} className="border-b border-cream-300/70">
+                  <div key={item.to} className="border-b border-cream-100/10">
                     <button
                       type="button"
                       onClick={() => setMobileServicesOpen((v) => !v)}
                       aria-expanded={mobileServicesOpen}
-                      className="flex w-full items-center justify-between py-4 font-display text-xl font-semibold text-teal-900"
+                      className="flex w-full items-center justify-between py-4 text-left"
                     >
-                      Services
+                      <span className="flex items-baseline gap-3 font-display text-2xl font-semibold text-cream-100">
+                        <span className="text-sm font-semibold text-brass-400">0{i + 1}</span>
+                        Services
+                      </span>
                       <span
-                        className={`flex h-8 w-8 items-center justify-center rounded-full bg-cream-200 text-teal-900 transition-transform duration-300 ${
+                        className={`flex h-9 w-9 items-center justify-center rounded-full border border-cream-100/15 text-brass-300 transition-transform duration-300 ${
                           mobileServicesOpen ? 'rotate-90' : ''
                         }`}
                       >
@@ -204,10 +230,10 @@ export default function Header() {
                           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="flex flex-col gap-0.5 pb-3">
+                          <div className="flex flex-col gap-0.5 pb-4 pl-1">
                             <Link
                               to="/services"
-                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-brass-600 hover:bg-cream-200"
+                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-brass-300 hover:bg-cream-100/5"
                             >
                               <Icon name="arrowUpRight" className="h-4 w-4" /> All Services
                             </Link>
@@ -215,9 +241,9 @@ export default function Header() {
                               <Link
                                 key={s.slug}
                                 to={`/services#${s.slug}`}
-                                className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-teal-900/75 hover:bg-cream-200"
+                                className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-cream-100/75 hover:bg-cream-100/5"
                               >
-                                <Icon name={s.icon} className="h-5 w-5 shrink-0 text-brass-600" strokeWidth={1.6} />
+                                <Icon name={s.icon} className="h-5 w-5 shrink-0 text-brass-400" strokeWidth={1.6} />
                                 {s.title.split(' (')[0]}
                               </Link>
                             ))}
@@ -232,25 +258,28 @@ export default function Header() {
                     to={item.to}
                     end={item.to === '/'}
                     className={({ isActive }) =>
-                      `flex items-center justify-between border-b border-cream-300/70 py-4 font-display text-xl font-semibold transition-colors ${
-                        isActive ? 'text-brass-600' : 'text-teal-900'
+                      `flex items-center justify-between border-b border-cream-100/10 py-4 transition-colors ${
+                        isActive ? 'text-brass-400' : 'text-cream-100'
                       }`
                     }
                   >
-                    {item.label}
-                    <Icon name="arrow" className="h-4 w-4 text-teal-900/25" strokeWidth={2} />
+                    <span className="flex items-baseline gap-3 font-display text-2xl font-semibold">
+                      <span className="text-sm font-semibold text-brass-400">0{i + 1}</span>
+                      {item.label}
+                    </span>
+                    <Icon name="arrow" className="h-4 w-4 text-cream-100/30" strokeWidth={2} />
                   </NavLink>
                 ),
               )}
             </nav>
 
             {/* Pinned CTA footer */}
-            <div className="container-px shrink-0 border-t border-cream-300 bg-cream-50 py-5">
+            <div className="container-px shrink-0 border-t border-cream-100/10 bg-teal-900/40 py-5">
               <div className="flex flex-col gap-3">
                 <Link to="/contact" className="btn-primary w-full">
                   Get a Free Consultation
                 </Link>
-                <a href={whatsappLink()} target="_blank" rel="noreferrer" className="btn-ghost w-full">
+                <a href={whatsappLink()} target="_blank" rel="noreferrer" className="btn-ghost-light w-full">
                   <Icon name="whatsapp" className="h-4 w-4" /> WhatsApp Us
                 </a>
               </div>
@@ -259,9 +288,9 @@ export default function Header() {
                   <a
                     key={p.value}
                     href={`tel:${p.value}`}
-                    className="flex items-center gap-2 text-sm font-medium text-teal-900"
+                    className="flex items-center gap-2 text-sm font-medium text-cream-100/85"
                   >
-                    <Icon name="phone" className="h-4 w-4 text-brass-600" /> {p.label}
+                    <Icon name="phone" className="h-4 w-4 text-brass-400" /> {p.label}
                   </a>
                 ))}
               </div>

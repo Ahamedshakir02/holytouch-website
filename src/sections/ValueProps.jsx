@@ -1,12 +1,16 @@
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 import CountUp from '../components/CountUp'
+import BlueprintGrid from '../components/decor/BlueprintGrid'
+import GlowBlob from '../components/decor/GlowBlob'
 import { valueProps, stats } from '../data/content'
 
 export default function ValueProps() {
   return (
-    <section className="relative z-10 bg-cream-100">
-      <div className="container-px section-y">
+    <section className="relative z-10 overflow-hidden bg-cream-100">
+      <BlueprintGrid className="opacity-[0.04]" />
+      <GlowBlob className="-right-28 top-24 h-80 w-80" />
+      <div className="container-px section-y relative">
         {/* Value-prop card */}
         <div className="overflow-hidden rounded-2xl border border-teal-900/10 shadow-card">
           <div className="grid grid-cols-1 gap-px bg-teal-900/10 sm:grid-cols-2 lg:grid-cols-4">
@@ -14,8 +18,9 @@ export default function ValueProps() {
               <Reveal
                 key={v.title}
                 delay={i * 0.08}
-                className="group relative bg-cream-50 p-8 transition-colors duration-500 hover:bg-cream-100"
+                className="group relative overflow-hidden bg-cream-50 p-8 transition-colors duration-500 hover:bg-cream-100"
               >
+                <span className="absolute left-0 top-0 h-0.5 w-0 bg-brass-500 transition-all duration-500 group-hover:w-full" />
                 <span className="font-display text-xs font-semibold tracking-widest text-brass-500/70">
                   0{i + 1}
                 </span>

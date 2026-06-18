@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import SectionHeading from '../components/SectionHeading'
 import Icon from '../components/Icon'
+import BlueprintGrid from '../components/decor/BlueprintGrid'
+import GlowBlob from '../components/decor/GlowBlob'
 import { testimonials } from '../data/content'
 
 export default function Testimonials() {
@@ -10,8 +12,10 @@ export default function Testimonials() {
   const go = (dir) => setI((prev) => (prev + dir + testimonials.length) % testimonials.length)
 
   return (
-    <section className="section-y bg-cream-100">
-      <div className="container-px">
+    <section className="section-y relative overflow-hidden bg-cream-100">
+      <BlueprintGrid className="opacity-[0.04]" />
+      <GlowBlob className="left-1/2 top-1/3 h-96 w-96 -translate-x-1/2" />
+      <div className="container-px relative">
         <SectionHeading
           align="center"
           index="(05)"
@@ -22,7 +26,11 @@ export default function Testimonials() {
         />
 
         <div className="relative mx-auto mt-14 max-w-3xl">
-          <Icon name="quote" className="mx-auto h-12 w-12 text-brass-300" />
+          <Icon
+            name="quote"
+            className="pointer-events-none absolute -top-6 left-1/2 h-40 w-40 -translate-x-1/2 text-brass-500/[0.06]"
+          />
+          <Icon name="quote" className="relative mx-auto h-12 w-12 text-brass-300" />
           <div className="mt-6 min-h-[180px] text-center sm:min-h-[150px]">
             <AnimatePresence mode="wait">
               <motion.blockquote

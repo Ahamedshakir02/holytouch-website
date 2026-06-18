@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
+import GlowBlob from '../components/decor/GlowBlob'
+import ContourLines from '../components/decor/ContourLines'
+import CornerFrame from '../components/decor/CornerFrame'
 import { whyChoose } from '../data/content'
 import { site } from '../data/site'
 
@@ -10,8 +13,9 @@ const IMG =
 
 export default function WhyChoose() {
   return (
-    <section className="section-y bg-cream-100">
-      <div className="container-px grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+    <section className="section-y relative overflow-hidden bg-cream-100">
+      <GlowBlob className="-left-32 top-1/3 h-80 w-80" />
+      <div className="container-px relative grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
         {/* Image side */}
         <Reveal className="relative">
           <div className="overflow-hidden rounded-3xl">
@@ -22,6 +26,7 @@ export default function WhyChoose() {
               loading="lazy"
             />
           </div>
+          <CornerFrame />
           {/* Promise badge */}
           <div className="absolute -bottom-6 left-6 max-w-[15rem] rounded-2xl bg-teal-900 p-6 text-cream-100 shadow-card sm:left-auto sm:right-6">
             <Icon name="shield" className="h-8 w-8 text-brass-400" />
@@ -32,7 +37,8 @@ export default function WhyChoose() {
         </Reveal>
 
         {/* Content side */}
-        <div>
+        <div className="relative">
+          <ContourLines className="-top-10 right-0 h-40 w-2/3" opacity={0.35} />
           <Reveal>
             <span className="eyebrow text-brass-600"><span className="tabular-nums opacity-60">(03)</span> Why choose Holytouch</span>
             <h2 className="mt-5 text-balance font-display text-display-lg font-bold text-teal-900">

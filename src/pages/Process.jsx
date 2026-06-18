@@ -1,9 +1,13 @@
+import { useRef } from 'react'
+import { motion, useScroll, useReducedMotion } from 'framer-motion'
 import Seo from '../components/Seo'
 import PageHero from '../components/PageHero'
 import SectionHeading from '../components/SectionHeading'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 import CtaBand from '../sections/CtaBand'
+import BlueprintGrid from '../components/decor/BlueprintGrid'
+import GlowBlob from '../components/decor/GlowBlob'
 import { process, valueProps } from '../data/content'
 
 const HERO = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=80'
@@ -17,6 +21,13 @@ const stageDetails = {
 }
 
 export default function Process() {
+  const timelineRef = useRef(null)
+  const reduce = useReducedMotion()
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start 75%', 'end 60%'],
+  })
+
   return (
     <>
       <Seo
@@ -34,9 +45,14 @@ export default function Process() {
       {/* Vertical timeline */}
       <section className="bg-cream-100 section-y">
         <div className="container-px">
-          <div className="relative mx-auto max-w-3xl">
-            {/* center line */}
+          <div ref={timelineRef} className="relative mx-auto max-w-3xl">
+            {/* center line — faint track + a brass progress line that draws in on scroll */}
             <div className="absolute left-[27px] top-2 h-full w-px bg-cream-300 sm:left-1/2 sm:-translate-x-1/2" aria-hidden="true" />
+            <motion.div
+              aria-hidden="true"
+              className="absolute left-[27px] top-2 h-full w-px origin-top bg-brass-500 sm:left-1/2 sm:-translate-x-1/2"
+              style={{ scaleY: reduce ? 1 : scrollYProgress }}
+            />
 
             <div className="space-y-12">
               {process.map((p, i) => (
@@ -72,8 +88,10 @@ export default function Process() {
       </section>
 
       {/* What you get / value props */}
-      <section className="section-y bg-teal-950 text-cream-100">
-        <div className="container-px">
+      <section className="section-y relative overflow-hidden bg-teal-950 text-cream-100">
+        <BlueprintGrid variant="dark" className="opacity-[0.05]" />
+        <GlowBlob className="-left-24 top-10 h-80 w-80" />
+        <div className="container-px relative">
           <SectionHeading
             light
             align="center"

@@ -2,12 +2,16 @@ import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
 import Icon from '../components/Icon'
+import BlueprintGrid from '../components/decor/BlueprintGrid'
+import GlowBlob from '../components/decor/GlowBlob'
 import { services } from '../data/services'
 
 export default function ServicesPreview() {
   return (
-    <section className="section-y bg-cream-100">
-      <div className="container-px">
+    <section className="section-y relative overflow-hidden bg-cream-100">
+      <BlueprintGrid className="opacity-[0.04]" />
+      <GlowBlob className="-left-28 bottom-10 h-80 w-80" />
+      <div className="container-px relative">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading
             index="(01)"
@@ -27,8 +31,9 @@ export default function ServicesPreview() {
             <Reveal key={s.slug} delay={(i % 4) * 0.06}>
               <Link
                 to={`/services#${s.slug}`}
-                className="group flex h-full flex-col bg-cream-50 p-7 transition-colors duration-500 hover:bg-cream-100"
+                className="group relative flex h-full flex-col overflow-hidden bg-cream-50 p-7 transition-colors duration-500 hover:bg-cream-100"
               >
+                <span className="absolute left-0 top-0 h-0.5 w-0 bg-brass-500 transition-all duration-500 group-hover:w-full" />
                 <div className="flex items-center justify-between">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brass-500/10 text-brass-600 transition-colors duration-500 group-hover:bg-brass-500 group-hover:text-teal-950">
                     <Icon name={s.icon} className="h-6 w-6" strokeWidth={1.5} />

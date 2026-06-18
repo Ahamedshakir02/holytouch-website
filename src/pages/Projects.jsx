@@ -5,6 +5,8 @@ import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 import CtaBand from '../sections/CtaBand'
+import BlueprintGrid from '../components/decor/BlueprintGrid'
+import GlowBlob from '../components/decor/GlowBlob'
 import { projects, categories } from '../data/projects'
 
 const HERO = 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1920&q=80'
@@ -29,8 +31,10 @@ export default function Projects() {
         image={HERO}
       />
 
-      <section className="bg-cream-100 py-16 sm:py-20">
-        <div className="container-px">
+      <section className="bg-cream-100 py-16 sm:py-20 relative overflow-hidden">
+        <BlueprintGrid className="opacity-[0.04]" />
+        <GlowBlob className="-left-28 top-24 h-80 w-80" />
+        <div className="container-px relative">
           {/* Filters */}
           <div className="flex flex-wrap items-center gap-2.5">
             {categories.map((c) => (
