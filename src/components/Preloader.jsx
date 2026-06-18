@@ -41,26 +41,14 @@ export default function Preloader() {
           exit={{ y: '-100%' }}
           transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] }}
         >
-          <svg viewBox="0 0 96 96" className="h-24 w-24" aria-hidden="true">
-            <motion.circle
-              cx="48" cy="48" r="44"
-              fill="none" stroke="#C2A15A" strokeWidth="1.6"
-              initial={{ pathLength: 0, opacity: 0.4 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 1.2, ease: 'easeInOut' }}
-            />
-            <motion.g
-              transform="rotate(-12 48 48)"
-              style={{ transformOrigin: 'center' }}
-              initial={{ opacity: 0, scale: 0.6 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.35, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <path d="M48 26c14 12 14 28 0 44-14-16-14-32 0-44Z" fill="none" stroke="#C2A15A" strokeWidth="2.4" strokeLinejoin="round" />
-              <path d="M48 32c-.8 12-.8 24 0 36" stroke="#D9BE85" strokeWidth="1.5" strokeLinecap="round" />
-              <path d="M48 45c3.4-1.8 6.2-4 8.2-6.8M48 54c3.4-1.8 6.2-4 8.2-6.8" stroke="#C2A15A" strokeWidth="1.3" strokeLinecap="round" fill="none" />
-            </motion.g>
-          </svg>
+          <motion.img
+            src="/logo-mark-light.png"
+            alt=""
+            className="h-24 w-24 object-contain"
+            initial={{ opacity: 0, scale: 0.7 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          />
 
           <motion.div
             className="mt-7 text-center"
