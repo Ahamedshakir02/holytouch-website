@@ -38,8 +38,8 @@ export default function Preloader() {
         <motion.div
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-teal-950"
           initial={{ opacity: 1 }}
-          exit={{ y: '-100%' }}
-          transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.img
             src="/logo-mark-light.png"
