@@ -28,7 +28,7 @@ export default function ValueProps() {
                   <Icon name={v.icon} className="h-6 w-6" strokeWidth={1.5} />
                 </span>
                 <h3 className="mt-5 font-display text-lg font-semibold text-teal-900">{v.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-teal-900/55">{v.text}</p>
+                <p className="mt-2 text-sm leading-relaxed text-teal-900/65">{v.text}</p>
               </Reveal>
             ))}
           </div>
@@ -41,7 +41,7 @@ export default function ValueProps() {
               <p className="font-display text-4xl font-bold tracking-tightest text-teal-900 sm:text-5xl">
                 <CountUp value={s.value} />
               </p>
-              <p className="mt-2 text-sm text-teal-900/55">{s.label}</p>
+              <p className="mt-2 text-sm text-teal-900/65">{s.label}</p>
             </Reveal>
           ))}
         </div>

@@ -58,7 +58,7 @@ export default function WhyChoose() {
                 </span>
                 <div>
                   <h3 className="font-display text-base font-semibold text-teal-900">{w.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-teal-900/55">{w.text}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-teal-900/65">{w.text}</p>
                 </div>
               </Reveal>
             ))}

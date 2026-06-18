@@ -45,7 +45,7 @@ export default function ServicesPreview() {
                 <h3 className="mt-6 font-display text-lg font-semibold leading-snug text-teal-900">
                   {s.title.split(' (')[0]}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-teal-900/55">{s.short}</p>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-teal-900/65">{s.short}</p>
                 <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brass-600">
                   Learn more
                   <Icon name="arrow" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2} />
