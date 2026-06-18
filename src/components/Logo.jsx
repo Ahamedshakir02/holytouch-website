@@ -22,9 +22,9 @@ export default function Logo({ variant = 'dark', className = '' }) {
       <img
         src={MARK[variant] || MARK.dark}
         alt=""
-        width="44"
-        height="44"
-        className="h-11 w-11 shrink-0 object-contain transition-transform duration-500 group-hover:scale-[1.05]"
+        width="36"
+        height="36"
+        className="h-9 w-9 shrink-0 object-contain transition-transform duration-500 group-hover:scale-[1.05]"
       />
       <span className="flex flex-col leading-none">
         <span className={`font-display text-lg font-bold tracking-tightest ${wordColor}`}>
