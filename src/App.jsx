@@ -1,10 +1,12 @@
+import { useState } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, useReducedMotion } from 'framer-motion'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 import Preloader from './components/Preloader'
+import PageCurtain from './components/PageCurtain'
 import useSmoothScroll, { getLenis } from './hooks/useSmoothScroll'
 
 import Home from './pages/Home'
@@ -20,14 +22,19 @@ export default function App() {
   const location = useLocation()
   const reduce = useReducedMotion()
 
-  // After the outgoing page has finished fading out, snap the incoming page to the top
-  // so it mounts already scrolled up — no mid-fade jump. (Hash anchors are handled by
-  // ScrollToTop once the new page is mounted.)
-  const resetScroll = () => {
-    if (location.hash) return
-    const lenis = getLenis()
-    if (lenis) lenis.scrollTo(0, { immediate: true })
-    else window.scrollTo(0, 0)
+  // The page content tracks `displayed`, which lags `location` by one curtain phase:
+  // when the route changes the outgoing curtain fades to full teal, and only once it has
+  // fully covered the screen (onExitComplete) do we swap the content + reset scroll, then
+  // the incoming curtain fades away to reveal it. So the swap is never a flash of cream.
+  const [displayed, setDisplayed] = useState(location)
+
+  const handleCovered = () => {
+    setDisplayed(location)
+    if (!location.hash) {
+      const lenis = getLenis()
+      if (lenis) lenis.scrollTo(0, { immediate: true })
+      else window.scrollTo(0, 0)
+    }
   }
 
   return (
@@ -36,28 +43,22 @@ export default function App() {
       <ScrollToTop />
       <Header />
       <main className="flex-1">
-        <AnimatePresence mode="wait" initial={false} onExitComplete={resetScroll}>
-          <motion.div
-            key={location.pathname}
-            initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Routes location={location}>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/process" element={<Process />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </motion.div>
-        </AnimatePresence>
+        <Routes location={displayed}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/process" element={<Process />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
       <Footer />
       <FloatingWhatsApp />
+
+      <AnimatePresence mode="wait" initial={false} onExitComplete={handleCovered}>
+        <PageCurtain key={location.pathname} reduce={reduce} />
+      </AnimatePresence>
     </div>
   )
 }
