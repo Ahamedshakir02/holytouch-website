@@ -24,10 +24,12 @@ export default {
           700: '#876A30',
         },
         cream: {
-          50: '#FBFAF6',
-          100: '#F7F4ED', // primary light surface
-          200: '#EFEADD',
-          300: '#E5DDCB', // sand / borders on light
+          // Warm "paper" tones — pulled down from near-white to cut on-screen glare
+          // while keeping strong contrast with the dark teal text.
+          50: '#F6F1E6',
+          100: '#F1EBDD', // primary light surface
+          200: '#E7DECB',
+          300: '#DBD0B9', // sand / borders on light
         },
         ink: '#0A211D',
       },
