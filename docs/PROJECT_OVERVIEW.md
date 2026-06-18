@@ -8,8 +8,9 @@ map of the codebase.
 - **What it is:** A premium, multi-page marketing website for an end-to-end
   construction & design firm in Kerala, India.
 - **Brand promise:** _Built on Trust, Delivered with Pride._
-- **Status:** All pages built and refined; production build verified. Content/assets
-  are placeholders pending real material (see [Handover checklist](#8-handover-checklist)).
+- **Status:** All pages built and refined; production build verified. The **real logo is
+  integrated**; remaining content/assets (photos, testimonials, map, OG image) are
+  placeholders pending real material (see [Handover checklist](#8-handover-checklist)).
 
 ---
 
@@ -29,7 +30,7 @@ of work**.
 
 | Decision | Choice | Why |
 | --- | --- | --- |
-| **Colour scheme** | (A) Brass/gold accent on deep teal-green + off-white | Teal ties to the leaf/swoosh logo and reads "premium villa"; brass is reserved for accents/CTAs so it stays luxurious, not loud |
+| **Colour scheme** | (A) Brass/gold accent on deep teal-green + off-white | Reads "premium villa"; brass is reserved for accents/CTAs so it stays luxurious, not loud. (Warm-paper cream replaced the near-white surfaces to cut glare.) |
 | **Stack** | React + Vite + Tailwind CSS + Framer Motion + Lenis | User's default; best fit for the scroll-reveal/parallax brief. Lenis added for premium smooth scroll |
 | **Output** | Real multi-file buildable codebase | Production-ready, not a throwaway demo |
 | **Routing** | Multi-page via React Router | True multi-page sitemap as specified |
@@ -44,7 +45,8 @@ of work**.
 
 - **Colour tokens** (`tailwind.config.js`): `teal-900 #0A211D` / `teal-950 #071A17`
   (dark surfaces, all heroes, footer); `brass-500 #C2A15A` (+ `brass-300 #D9BE85`)
-  for accents, CTAs, icons, hairlines, indices; `cream-100 #F7F4ED` (+ `cream-200`).
+  for accents, CTAs, icons, hairlines, indices; `cream-100 #F1EBDD` warm-paper light
+  surface (+ `cream-200`) — pulled down from the original near-white to cut on-screen glare.
 - **Fluid display sizes**: `text-display-xl/lg/md/sm` use `clamp()` — no breakpoint jumps.
 - **Vertical rhythm**: one `.section-y` utility used site-wide.
 - **Hairline detailing**: `1px` dividers via the `gap-px` technique + `.hairline`,
@@ -82,27 +84,31 @@ home preview and the Services page.
 
 ```
 holytouch-website/
-├── index.html                 SEO meta, Open Graph/Twitter tags, Google Fonts
+├── index.html                 SEO meta, Open Graph/Twitter tags, Google Fonts, favicon.png
 ├── tailwind.config.js          Tokens, fonts, fluid display sizes, shadows, keyframes
-├── public/favicon.svg          Leaf-in-ring mark (matches the logo)
+├── scripts/process_logo.py     Derives transparent, recoloured logo marks + favicon from the uploads
+├── public/                     logo-*.png (real logo uploads + derived marks), favicon.png, images
 └── src/
     ├── main.jsx                React + Router bootstrap
-    ├── App.jsx                 Routes + Preloader + useSmoothScroll + Header/Footer/WhatsApp
+    ├── App.jsx                 Routes + Preloader + page-transition curtain + useSmoothScroll + Header/Footer/WhatsApp
     ├── index.css               Tailwind layers, component classes, Lenis CSS, reduced-motion guard
     ├── components/             Reusable, page-agnostic building blocks
     │   ├── Header.jsx          Sticky nav (scroll-state light/dark), services mega-dropdown, mobile menu
     │   ├── Footer.jsx          CTA strip + links + contact
-    │   ├── Logo.jsx            Refined leaf-in-brass-ring placeholder + wordmark (hover settle)
+    │   ├── Logo.jsx            Real Holytouch mark (tinted transparent PNG) + Outfit wordmark
     │   ├── Icon.jsx            Dependency-free inline-SVG icon set
     │   ├── Reveal.jsx          Scroll-reveal wrapper (respects reduced-motion)
     │   ├── SectionHeading.jsx  Optional index + eyebrow + fluid title + intro
     │   ├── PageHero.jsx        FULL-SCREEN inner-page hero (parallax + meta bar) — mirrors home
     │   ├── ProcessSteps.jsx    Reusable 4-step process (Home + Process page)
     │   ├── Seo.jsx             Per-page <title> + meta description
-    │   ├── ScrollToTop.jsx     Route scroll reset / #anchor jumps (via Lenis when active)
-    │   ├── FloatingWhatsApp.jsx Scroll-aware WhatsApp button (collapses on scroll-down)
-    │   ├── Preloader.jsx       Brand intro, once per session
-    │   └── CountUp.jsx         Animated count-up for stats
+    │   ├── ScrollToTop.jsx     #anchor jumps (route top-reset handled by the page-transition curtain)
+    │   ├── FloatingWhatsApp.jsx WhatsApp button — reveals past the hero, hides at the footer
+    │   ├── Preloader.jsx       Brand intro (logo mark), once per session; fades out
+    │   ├── PageCurtain.jsx     Branded "dip to teal" route-change transition (logo mark)
+    │   ├── CountUp.jsx         Animated count-up for stats
+    │   └── decor/              Decorative primitives: BlueprintGrid, GlowBlob, ContourLines,
+    │                           Marquee, SectionDivider, CornerFrame (pointer-events-none, low opacity)
     ├── hooks/
     │   └── useSmoothScroll.js  Lenis init + RAF loop + shared instance accessor (getLenis)
     ├── sections/               Home-page sections
@@ -128,16 +134,18 @@ one-line data edit, not a hunt through markup.
 
 | Effect | Where | Notes |
 | --- | --- | --- |
-| Brand intro preloader | `components/Preloader.jsx` | Logo ring draws in, wordmark fades, panel wipes up. Once per session (`sessionStorage`) |
+| Brand intro preloader | `components/Preloader.jsx` | Logo mark scales in, wordmark fades, panel fades out. Once per session (`sessionStorage`) |
+| Page-change transition | `components/PageCurtain.jsx` | Branded "dip to teal" curtain (logo mark) covers the route swap so it's never a flash of cream. `AnimatePresence` in `App.jsx` swaps content + resets scroll under the cover. Quick opacity fade; near-instant under reduced-motion |
+| Refined graphic accents | `components/decor/*` | `BlueprintGrid`/`GlowBlob`/`ContourLines` (draw-on)/`Marquee`/`SectionDivider`/`CornerFrame`; all `pointer-events-none`, low opacity, reduced-motion aware |
 | Smooth scrolling (Lenis) | `hooks/useSmoothScroll.js` | RAF loop; shared instance via `getLenis()`. Disabled under reduced-motion |
 | Full-screen hero parallax | `sections/Hero.jsx`, `components/PageHero.jsx` | `useScroll` + `useTransform`; both `min-h-[100svh]`; static under reduced-motion |
 | Scroll-reveal fade/rise | `components/Reveal.jsx` | Fires once on enter; `delay` prop staggers siblings |
 | Count-up stats | `components/CountUp.jsx` | `useInView` + motion value; parses `150+`/`100%`/`8`; final value under reduced-motion |
-| Scroll-aware WhatsApp | `components/FloatingWhatsApp.jsx` | Present from first paint; collapses to icon on scroll-down, expands at top/scroll-up |
+| Scroll-aware WhatsApp | `components/FloatingWhatsApp.jsx` | Single deterministic calc (scrollY past hero + footer position): hidden on the hero, reveals after it, hides as the footer arrives |
 | Services mega-dropdown | `components/Header.jsx` | Animated open/close via `AnimatePresence` |
 | Project filter + modal | `pages/Projects.jsx` | `layout` animations + popLayout exit |
 | Testimonial carousel | `sections/Testimonials.jsx` | Manual controls, no autoplay |
-| Hover micro-interactions | throughout | Card lift, icon chip fill, arrow nudge, logo leaf settle |
+| Hover micro-interactions | throughout | Card lift + brass accent-line grow, icon chip fill, arrow nudge, logo mark scale |
 
 All gated by the `@media (prefers-reduced-motion: reduce)` rule in `index.css`
 (collapses transitions/animations) **plus** explicit guards: the preloader and Lenis
@@ -161,9 +169,11 @@ are skipped, and parallax/count-ups resolve to their final state.
 ## 7. Build verification
 
 - `npm install` — clean (adds `lenis`).
-- `npm run build` — **424 modules transformed, no errors.**
-  Output ≈ 387 kB JS (≈121 kB gzip), ≈37.5 kB CSS (≈6.7 kB gzip).
+- `npm run build` — **430 modules transformed, no errors.**
+  Output ≈ 397 kB JS (≈123 kB gzip), ≈40 kB CSS (≈7.3 kB gzip).
 - `npm run dev` — boots in ~1s, serves HTTP 200.
+- Logo assets: `python scripts/process_logo.py` (one-time tool; needs Pillow) regenerates
+  `public/logo-mark-{dark,light}.png` + `public/favicon.png` from the uploaded logo PNGs.
 
 ---
 
@@ -172,8 +182,9 @@ are skipped, and parallax/count-ups resolve to their final state.
 Everything below is a **placeholder** clearly marked in-code (`REPLACE` /
 `PLACEHOLDER` / `TODO`). Swap before launch:
 
-- [ ] **Logo** — replace the refined leaf-in-ring placeholder in `components/Logo.jsx`
-      with the real asset; update `public/favicon.svg` to match.
+- [x] **Logo** — ✅ real Holytouch mark integrated (Header, Footer, mobile menu, preloader,
+      page-transition curtain, favicon). Source uploads in `public/logo-*.png`; transparent
+      marks + favicon derived via `scripts/process_logo.py`.
 - [ ] **Images** — home hero (`sections/Hero.jsx`), each page hero (`HERO` const in
       `pages/*.jsx`), projects (`data/projects.js`), services (`pages/Services.jsx`).
 - [ ] **Projects** — real titles, locations, areas, photos, summaries in `data/projects.js`.
@@ -204,6 +215,19 @@ A short history of the design passes (most recent last):
    `100svh` (parallax + meta bar) matching home; logo redrawn as a refined
    leaf-in-brass-ring (+ favicon); added the **brand intro preloader**, **Lenis smooth
    scrolling**, and **count-up stats**. WhatsApp button made scroll-aware (collapse/expand).
+6. **Real logo + transitions + graphic accents + brightness.**
+   - **WhatsApp fix** — replaced the fighting scroll-listener/IntersectionObserver logic
+     with one deterministic calc (hidden on hero → reveals past it → hides at footer).
+   - **Page transitions** — branded "dip to teal" curtain (`PageCurtain.jsx`) covers the
+     route swap (no white flash); content swaps + scroll resets under the cover.
+   - **Refined graphic accents** — new `components/decor/` primitives applied across all
+     pages (blueprint grids, glows, draw-on contours, a trust marquee, corner brackets,
+     an animated Process timeline line, card accent-lines).
+   - **Real logo** — integrated the supplied Holytouch mark everywhere; `scripts/process_logo.py`
+     derives transparent, recoloured marks + favicon from the uploads. Preloader/curtain
+     now show the real mark; preloader exit is a clean fade.
+   - **Brightness** — warmed the cream palette down from near-white to cut glare, and
+     bumped low-contrast secondary text (`/50`,`/55` → `/65`) for readability.
 
 ---
 
