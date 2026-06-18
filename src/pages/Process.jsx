@@ -67,7 +67,7 @@ export default function Process() {
                     <div className={`ml-20 sm:ml-0 sm:w-[calc(50%-2.5rem)] ${i % 2 === 1 ? 'sm:pr-12 sm:text-right' : 'sm:pl-12'}`}>
                       <span className="font-display text-sm font-bold text-brass-600">STEP {p.step}</span>
                       <h3 className="mt-1 font-display text-2xl font-bold text-teal-900">{p.title}</h3>
-                      <p className="mt-1 text-sm font-medium text-teal-900/50">{p.short}</p>
+                      <p className="mt-1 text-sm font-medium text-teal-900/65">{p.short}</p>
                       <p className="mt-3 text-base leading-relaxed text-teal-900/70">{p.text}</p>
                       <ul className={`mt-4 space-y-2 ${i % 2 === 1 ? 'sm:flex sm:flex-col sm:items-end' : ''}`}>
                         {stageDetails[p.title].map((d) => (

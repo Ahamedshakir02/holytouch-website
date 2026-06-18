@@ -176,7 +176,7 @@ export default function Contact() {
                   <Icon name="pin" className="h-7 w-7" />
                 </span>
                 <p className="mt-3 font-display text-lg font-semibold text-teal-900">Map placeholder — {site.location}</p>
-                <p className="mt-1 text-sm text-teal-900/55">Embed your Google Maps location iframe here.</p>
+                <p className="mt-1 text-sm text-teal-900/65">Embed your Google Maps location iframe here.</p>
               </div>
             </div>
           </Reveal>

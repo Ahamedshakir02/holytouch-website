@@ -144,7 +144,7 @@ function ProjectModal({ project, onClose }) {
               ['Category', project.category],
             ].map(([k, v]) => (
               <div key={k}>
-                <dt className="text-teal-900/50">{k}</dt>
+                <dt className="text-teal-900/65">{k}</dt>
                 <dd className="mt-0.5 font-semibold text-teal-900">{v}</dd>
               </div>
             ))}
