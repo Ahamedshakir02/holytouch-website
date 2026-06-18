@@ -6,7 +6,7 @@ import { useReducedMotion } from 'framer-motion'
 // `variant` controls text/separator colour for light vs. dark surfaces.
 export default function Marquee({ items, variant = 'light', className = '' }) {
   const reduce = useReducedMotion()
-  const text = variant === 'dark' ? 'text-cream-100/70' : 'text-teal-900/55'
+  const text = variant === 'dark' ? 'text-cream-100/70' : 'text-teal-900/65'
   const dot = variant === 'dark' ? 'bg-brass-400/80' : 'bg-brass-500/70'
 
   const Track = ({ hidden = false }) => (
