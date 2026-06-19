@@ -117,4 +117,88 @@ export const projects = [
     summary:
       'A stepped hillside home with cantilevered decks that follow the contours and capture valley views.',
   },
+  {
+    id: 'coastal-bungalow',
+    title: 'Coastal Breeze Bungalow',
+    category: 'Residential',
+    status: 'Completed',
+    location: 'Kollam, Kerala',
+    year: '2023',
+    area: '2,800 sq.ft',
+    image: img('1580587771525-78b9dba3b914'),
+    summary:
+      'A breezy single-storey bungalow with wide verandahs and louvered screens tuned to the coastal climate.',
+  },
+  {
+    id: 'skyline-apartments',
+    title: 'Skyline Residences',
+    category: 'Residential',
+    status: 'Ongoing',
+    location: 'Kochi, Kerala',
+    year: '2025',
+    area: '5,400 sq.ft',
+    image: img('1567496898669-ee935f5f647a'),
+    summary:
+      'A residential tower with sky gardens, shared amenities and column-free, light-filled living spaces.',
+  },
+  {
+    id: 'aurelia-penthouse',
+    title: 'Aurelia Penthouse Interiors',
+    category: 'Interior',
+    status: 'Completed',
+    location: 'Kochi, Kerala',
+    year: '2024',
+    area: '2,600 sq.ft',
+    image: img('1502672260266-1c1ef2d93688'),
+    summary:
+      'A light-filled penthouse interior layering oak, travertine and brass with bespoke concealed storage.',
+  },
+  {
+    id: 'lumen-workspace',
+    title: 'Lumen Workspace Fit-out',
+    category: 'Commercial',
+    status: 'Ongoing',
+    location: 'Kozhikode, Kerala',
+    year: '2025',
+    area: '14,000 sq.ft',
+    image: img('1524758631624-e2822e304c36'),
+    summary:
+      'A corporate fit-out delivered turnkey — acoustics, lighting and joinery designed and built as one package.',
+  },
+  {
+    id: 'saffron-restaurant',
+    title: 'Saffron Restaurant & Lounge',
+    category: 'Commercial',
+    status: 'Completed',
+    location: 'Thrissur, Kerala',
+    year: '2023',
+    area: '6,800 sq.ft',
+    image: img('1517248135467-4c7edcad34c4'),
+    summary:
+      'A warm hospitality interior with textured plaster, soft layered lighting and a sculpted brass-clad bar.',
+  },
+  {
+    id: 'maple-kitchen',
+    title: 'Maple Kitchen & Living',
+    category: 'Interior',
+    status: 'Completed',
+    location: 'Kannur, Kerala',
+    year: '2024',
+    area: '1,700 sq.ft',
+    image: img('1484154218962-a197022b5858'),
+    summary:
+      'A compact kitchen and living renovation with handleless joinery, a quartz island and warm task lighting.',
+  },
+  {
+    id: 'riverside-garden',
+    title: 'Riverside Garden Retreat',
+    category: 'Landscape',
+    status: 'Upcoming',
+    location: 'Thrissur, Kerala',
+    year: '2026',
+    area: '7,200 sq.ft',
+    image: img('1466692476868-aef1dfb1e735'),
+    summary:
+      'A riverside landscape masterplan with native planting, stepped lawns and a layered evening lighting scheme.',
+  },
 ]
