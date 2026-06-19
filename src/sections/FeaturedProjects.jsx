@@ -26,7 +26,7 @@ export default function FeaturedProjects() {
         </div>
 
         {/* Asymmetric feature grid */}
-        <div className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-16 md:grid-cols-3">
           {/* Large first card */}
           <Reveal className="md:col-span-2 md:row-span-2">
             <FeatureCard project={featured[0]} large />
