@@ -18,7 +18,7 @@ export default function ValueProps() {
               <Reveal
                 key={v.title}
                 delay={i * 0.08}
-                className="group relative overflow-hidden bg-cream-50 p-8 transition-colors duration-500 hover:bg-cream-100"
+                className="group relative overflow-hidden bg-cream-50 p-6 transition-colors duration-500 hover:bg-cream-100 sm:p-8"
               >
                 <span className="absolute left-0 top-0 h-0.5 w-0 bg-brass-500 transition-all duration-500 group-hover:w-full" />
                 <span className="font-display text-xs font-semibold tracking-widest text-brass-500/70">
@@ -35,7 +35,7 @@ export default function ValueProps() {
         </div>
 
         {/* Stats */}
-        <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 sm:mt-20 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 sm:mt-20 sm:gap-y-10 lg:grid-cols-4">
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.08} className="border-l border-teal-900/10 pl-5">
               <p className="font-display text-4xl font-bold tracking-tightest text-teal-900 sm:text-5xl">
