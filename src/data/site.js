@@ -21,10 +21,10 @@ export const site = {
     { day: 'Sunday', time: 'By appointment' },
   ],
   social: {
-    instagram: '#',
-    facebook: '#',
-    linkedin: '#',
-    youtube: '#',
+    instagram: 'https://www.instagram.com/holyt.ouch/',
+    facebook: '#', // TODO: add real Facebook URL
+    linkedin: '#', // TODO: add real LinkedIn URL
+    youtube: '#', // TODO: add real YouTube URL
   },
 }
 
