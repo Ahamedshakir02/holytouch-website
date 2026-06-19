@@ -45,7 +45,7 @@ export default function Projects() {
         breadcrumb="Projects"
         eyebrow="Our portfolio"
         title="Spaces we've brought to life"
-        intro="A selection of our residential, commercial, interior and landscape work across Kerala. These are placeholders — swap in your real project photography."
+        intro="A selection of our residential, commercial, interior and landscape work across Kerala."
         image={HERO}
       />
 
