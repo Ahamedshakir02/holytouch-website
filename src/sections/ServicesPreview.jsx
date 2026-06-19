@@ -26,12 +26,12 @@ export default function ServicesPreview() {
           </Reveal>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-teal-900/10 bg-teal-900/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-teal-900/10 bg-teal-900/10 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((s, i) => (
             <Reveal key={s.slug} delay={(i % 4) * 0.06}>
               <Link
                 to={`/services#${s.slug}`}
-                className="group relative flex h-full flex-col overflow-hidden bg-cream-50 p-7 transition-colors duration-500 hover:bg-cream-100"
+                className="group relative flex h-full flex-col overflow-hidden bg-cream-50 p-6 transition-colors duration-500 hover:bg-cream-100 sm:p-7"
               >
                 <span className="absolute left-0 top-0 h-0.5 w-0 bg-brass-500 transition-all duration-500 group-hover:w-full" />
                 <div className="flex items-center justify-between">
