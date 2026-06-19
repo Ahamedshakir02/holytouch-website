@@ -26,7 +26,7 @@ export default function ProcessSection() {
           </Reveal>
         </div>
 
-        <div className="mt-16">
+        <div className="mt-10 sm:mt-16">
           <ProcessSteps />
         </div>
       </div>
