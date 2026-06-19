@@ -16,7 +16,7 @@ export default function FeaturedProjects() {
             index="(04)"
             eyebrow="Featured work"
             title="Proof of work, not just promises"
-            intro="A glimpse of homes and spaces we've brought to life across Kerala. Swap these placeholders for your real project photography."
+            intro="A glimpse of homes and spaces we've brought to life across Kerala."
           />
           <Reveal>
             <Link to="/projects" className="btn-ghost shrink-0">
