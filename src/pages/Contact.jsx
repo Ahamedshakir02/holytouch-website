@@ -3,7 +3,6 @@ import Seo from '../components/Seo'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
-import BlueprintGrid from '../components/decor/BlueprintGrid'
 import GlowBlob from '../components/decor/GlowBlob'
 import { site, whatsappLink } from '../data/site'
 import { services } from '../data/services'
@@ -165,18 +164,26 @@ export default function Contact() {
           </Reveal>
         </div>
 
-        {/* Map placeholder */}
+        {/* Find us — embedded Google Map */}
         <div className="container-px relative mt-12">
           <Reveal>
-            <div className="relative flex aspect-[16/7] w-full items-center justify-center overflow-hidden rounded-3xl border border-cream-300 bg-cream-200">
-              {/* MAP PLACEHOLDER — replace with an embedded Google Map iframe of your office location. */}
-              <BlueprintGrid className="opacity-[0.06]" />
-              <div className="relative text-center">
-                <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-teal-900 text-brass-400">
-                  <Icon name="pin" className="h-7 w-7" />
-                </span>
-                <p className="mt-3 font-display text-lg font-semibold text-teal-900">Map placeholder — {site.location}</p>
-                <p className="mt-1 text-sm text-teal-900/65">Embed your Google Maps location iframe here.</p>
+            <div className="overflow-hidden rounded-3xl border border-cream-300 shadow-soft">
+              <div className="flex items-center gap-2.5 border-b border-cream-300 bg-cream-50 px-6 py-4">
+                <Icon name="pin" className="h-5 w-5 text-brass-600" />
+                <p className="font-display text-base font-semibold text-teal-900">
+                  Find us — {site.location}
+                </p>
+              </div>
+              <div className="aspect-[16/9] w-full sm:aspect-[16/7]">
+                <iframe
+                  title="Holytouch location on Google Maps"
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2155.3334706341475!2d76.01776156959502!3d10.78477894867784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTDCsDQ3JzA0LjMiTiA3NsKwMDEnMDguOCJF!5e0!3m2!1sen!2sin!4v1781809469829!5m2!1sen!2sin"
+                  className="h-full w-full"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
           </Reveal>
