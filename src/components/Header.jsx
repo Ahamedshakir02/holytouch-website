@@ -12,7 +12,6 @@ const nav = [
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services', dropdown: 'services' },
   { label: 'Projects', to: '/projects', dropdown: 'projects' },
-  { label: 'Gallery', to: '/gallery' },
   { label: 'Process', to: '/process' },
   { label: 'Contact', to: '/contact' },
 ]
