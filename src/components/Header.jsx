@@ -12,6 +12,7 @@ const nav = [
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services', dropdown: true },
   { label: 'Projects', to: '/projects' },
+  { label: 'Gallery', to: '/gallery' },
   { label: 'Process', to: '/process' },
   { label: 'Contact', to: '/contact' },
 ]
@@ -198,28 +199,25 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Scrollable nav */}
-            <nav className="container-px flex-1 overflow-y-auto py-3">
-              {nav.map((item, i) =>
+            {/* Scrollable nav — data-lenis-prevent lets the inner list scroll past Lenis */}
+            <nav data-lenis-prevent className="container-px flex-1 overflow-y-auto overscroll-contain py-3">
+              {nav.map((item) =>
                 item.dropdown ? (
                   <div key={item.to} className="border-b border-cream-100/10">
                     <button
                       type="button"
                       onClick={() => setMobileServicesOpen((v) => !v)}
                       aria-expanded={mobileServicesOpen}
-                      className="flex w-full items-center justify-between py-4 text-left"
+                      className="flex w-full items-center justify-between py-3.5 text-left font-display text-lg font-medium tracking-tight text-cream-100/90 transition-colors hover:text-brass-300"
                     >
-                      <span className="flex items-baseline gap-3 font-display text-2xl font-semibold text-cream-100">
-                        <span className="text-sm font-semibold text-brass-400">0{i + 1}</span>
-                        Services
-                      </span>
-                      <span
-                        className={`flex h-9 w-9 items-center justify-center rounded-full border border-cream-100/15 text-brass-300 transition-transform duration-300 ${
-                          mobileServicesOpen ? 'rotate-90' : ''
+                      Services
+                      <Icon
+                        name="arrow"
+                        className={`h-4 w-4 text-brass-300 transition-transform duration-300 ${
+                          mobileServicesOpen ? '-rotate-90' : 'rotate-90'
                         }`}
-                      >
-                        <Icon name="arrow" className="h-4 w-4 rotate-90" strokeWidth={2} />
-                      </span>
+                        strokeWidth={2}
+                      />
                     </button>
                     <AnimatePresence initial={false}>
                       {mobileServicesOpen && (
@@ -230,10 +228,10 @@ export default function Header() {
                           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="flex flex-col gap-0.5 pb-4 pl-1">
+                          <div className="flex flex-col pb-3">
                             <Link
                               to="/services"
-                              className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-brass-300 hover:bg-cream-100/5"
+                              className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-sm font-medium text-brass-300 hover:bg-cream-100/5"
                             >
                               <Icon name="arrowUpRight" className="h-4 w-4" /> All Services
                             </Link>
@@ -241,9 +239,9 @@ export default function Header() {
                               <Link
                                 key={s.slug}
                                 to={`/services#${s.slug}`}
-                                className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-cream-100/75 hover:bg-cream-100/5"
+                                className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-sm text-cream-100/70 hover:bg-cream-100/5"
                               >
-                                <Icon name={s.icon} className="h-5 w-5 shrink-0 text-brass-400" strokeWidth={1.6} />
+                                <Icon name={s.icon} className="h-5 w-5 shrink-0 text-brass-400/90" strokeWidth={1.6} />
                                 {s.title.split(' (')[0]}
                               </Link>
                             ))}
@@ -258,16 +256,12 @@ export default function Header() {
                     to={item.to}
                     end={item.to === '/'}
                     className={({ isActive }) =>
-                      `flex items-center justify-between border-b border-cream-100/10 py-4 transition-colors ${
-                        isActive ? 'text-brass-400' : 'text-cream-100'
+                      `block border-b border-cream-100/10 py-3.5 font-display text-lg font-medium tracking-tight transition-colors ${
+                        isActive ? 'text-brass-300' : 'text-cream-100/90 hover:text-brass-300'
                       }`
                     }
                   >
-                    <span className="flex items-baseline gap-3 font-display text-2xl font-semibold">
-                      <span className="text-sm font-semibold text-brass-400">0{i + 1}</span>
-                      {item.label}
-                    </span>
-                    <Icon name="arrow" className="h-4 w-4 text-cream-100/30" strokeWidth={2} />
+                    {item.label}
                   </NavLink>
                 ),
               )}
@@ -283,16 +277,13 @@ export default function Header() {
                   <Icon name="whatsapp" className="h-4 w-4" /> WhatsApp Us
                 </a>
               </div>
-              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5">
-                {site.phones.map((p) => (
-                  <a
-                    key={p.value}
-                    href={`tel:${p.value}`}
-                    className="flex items-center gap-2 text-sm font-medium text-cream-100/85"
-                  >
-                    <Icon name="phone" className="h-4 w-4 text-brass-400" /> {p.label}
-                  </a>
-                ))}
+              <div className="mt-4">
+                <a
+                  href={`tel:${site.phones[0].value}`}
+                  className="flex items-center gap-2 text-sm font-medium text-cream-100/85"
+                >
+                  <Icon name="phone" className="h-4 w-4 text-brass-400" /> {site.phones[0].label}
+                </a>
               </div>
             </div>
           </motion.div>
