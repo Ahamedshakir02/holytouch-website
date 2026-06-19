@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import Seo from '../components/Seo'
 import PageHero from '../components/PageHero'
@@ -200,9 +200,12 @@ function ProjectModal({ project, onClose }) {
             ))}
           </dl>
 
-          <p className="mt-6 rounded-xl bg-cream-200 p-4 text-xs text-teal-900/60">
-            Placeholder project detail. Replace with the real brief, scope, gallery and outcome.
-          </p>
+          <div className="mt-6 flex flex-col gap-3 border-t border-cream-300 pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm text-teal-900/65">Like what you see? Let's plan something similar for you.</p>
+            <Link to="/contact" onClick={onClose} className="btn-primary shrink-0">
+              Enquire <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+            </Link>
+          </div>
         </div>
       </motion.div>
     </motion.div>
