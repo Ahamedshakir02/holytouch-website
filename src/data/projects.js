@@ -5,11 +5,15 @@ const img = (id, w = 1200) =>
 
 export const categories = ['All', 'Residential', 'Commercial', 'Interior', 'Landscape']
 
+// Project lifecycle stage — drives the Projects nav dropdown + on-page filter.
+export const statuses = ['Ongoing', 'Completed', 'Upcoming']
+
 export const projects = [
   {
     id: 'aranya-villa',
     title: 'Aranya Courtyard Villa',
     category: 'Residential',
+    status: 'Completed',
     location: 'Thrissur, Kerala',
     year: '2024',
     area: '3,200 sq.ft',
@@ -21,6 +25,7 @@ export const projects = [
     id: 'lakeside-residence',
     title: 'Lakeside Residence',
     category: 'Residential',
+    status: 'Completed',
     location: 'Kochi, Kerala',
     year: '2023',
     area: '4,100 sq.ft',
@@ -32,8 +37,9 @@ export const projects = [
     id: 'meridian-offices',
     title: 'Meridian Corporate Offices',
     category: 'Commercial',
+    status: 'Ongoing',
     location: 'Kozhikode, Kerala',
-    year: '2024',
+    year: '2025',
     area: '18,000 sq.ft',
     image: img('1497366216548-37526070297c'),
     summary:
@@ -43,6 +49,7 @@ export const projects = [
     id: 'terra-retail',
     title: 'Terra Retail Arcade',
     category: 'Commercial',
+    status: 'Completed',
     location: 'Thrissur, Kerala',
     year: '2022',
     area: '12,500 sq.ft',
@@ -54,8 +61,9 @@ export const projects = [
     id: 'noor-interior',
     title: 'Noor Apartment Interiors',
     category: 'Interior',
+    status: 'Ongoing',
     location: 'Kochi, Kerala',
-    year: '2024',
+    year: '2025',
     area: '2,400 sq.ft',
     image: img('1600607687939-ce8a6c25118c'),
     summary:
@@ -65,6 +73,7 @@ export const projects = [
     id: 'amara-living',
     title: 'Amara Living Spaces',
     category: 'Interior',
+    status: 'Completed',
     location: 'Kannur, Kerala',
     year: '2023',
     area: '1,900 sq.ft',
@@ -76,8 +85,9 @@ export const projects = [
     id: 'verde-courtyard',
     title: 'Verde Courtyard Landscape',
     category: 'Landscape',
+    status: 'Upcoming',
     location: 'Thrissur, Kerala',
-    year: '2023',
+    year: '2026',
     area: '6,000 sq.ft',
     image: img('1558904541-efa843a96f01'),
     summary:
@@ -87,6 +97,7 @@ export const projects = [
     id: 'palm-grove',
     title: 'Palm Grove Garden',
     category: 'Landscape',
+    status: 'Completed',
     location: 'Alappuzha, Kerala',
     year: '2022',
     area: '8,500 sq.ft',
@@ -98,8 +109,9 @@ export const projects = [
     id: 'serene-villa',
     title: 'Serene Hillside Villa',
     category: 'Residential',
+    status: 'Upcoming',
     location: 'Wayanad, Kerala',
-    year: '2024',
+    year: '2026',
     area: '3,800 sq.ft',
     image: img('1564013799919-ab600027ffc6'),
     summary:
