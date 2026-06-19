@@ -45,10 +45,10 @@ export default {
       },
       // Fluid display sizes — scale smoothly from small phones to large screens.
       fontSize: {
-        'display-xl': ['clamp(2.4rem, 6.5vw, 5rem)', { lineHeight: '1.02', letterSpacing: '-0.035em' }],
-        'display-lg': ['clamp(2rem, 4.6vw, 3.25rem)', { lineHeight: '1.07', letterSpacing: '-0.03em' }],
-        'display-md': ['clamp(1.6rem, 3.2vw, 2.25rem)', { lineHeight: '1.12', letterSpacing: '-0.02em' }],
-        'display-sm': ['clamp(1.3rem, 2.4vw, 1.6rem)', { lineHeight: '1.2', letterSpacing: '-0.015em' }],
+        'display-xl': ['clamp(2.05rem, 6.5vw, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.035em' }],
+        'display-lg': ['clamp(1.7rem, 4.6vw, 3.25rem)', { lineHeight: '1.1', letterSpacing: '-0.03em' }],
+        'display-md': ['clamp(1.4rem, 3.2vw, 2.25rem)', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
+        'display-sm': ['clamp(1.2rem, 2.4vw, 1.6rem)', { lineHeight: '1.25', letterSpacing: '-0.015em' }],
       },
       boxShadow: {
         // Softer, more minimal elevation
