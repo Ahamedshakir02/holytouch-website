@@ -59,7 +59,7 @@
 
   /* Consistent vertical rhythm for sections */
   .section-y {
-    @apply py-20 sm:py-28 lg:py-32;
+    @apply py-14 sm:py-24 lg:py-32;
   }
 
   /* Eyebrow / kicker label used across sections */
