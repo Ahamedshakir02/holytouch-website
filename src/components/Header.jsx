@@ -10,18 +10,25 @@ import { getLenis } from '../hooks/useSmoothScroll'
 const nav = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
-  { label: 'Services', to: '/services', dropdown: true },
-  { label: 'Projects', to: '/projects' },
+  { label: 'Services', to: '/services', dropdown: 'services' },
+  { label: 'Projects', to: '/projects', dropdown: 'projects' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'Process', to: '/process' },
   { label: 'Contact', to: '/contact' },
 ]
 
+const projectMenu = [
+  { label: 'All Projects', to: '/projects', icon: 'layers', desc: 'Browse the full portfolio' },
+  { label: 'Ongoing Projects', to: '/projects/ongoing', icon: 'hammer', desc: 'Currently under construction' },
+  { label: 'Completed Projects', to: '/projects/completed', icon: 'check', desc: 'Delivered & handed over' },
+  { label: 'Upcoming Projects', to: '/projects/upcoming', icon: 'clock', desc: 'In planning & design' },
+]
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [servicesOpen, setServicesOpen] = useState(false)
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
+  const [openMenu, setOpenMenu] = useState(null) // desktop hover dropdown ('services' | 'projects')
+  const [mobileSub, setMobileSub] = useState(null) // mobile accordion ('services' | 'projects')
   const location = useLocation()
 
   useEffect(() => {
@@ -34,8 +41,8 @@ export default function Header() {
   // Close menus on route change
   useEffect(() => {
     setMobileOpen(false)
-    setServicesOpen(false)
-    setMobileServicesOpen(false)
+    setOpenMenu(null)
+    setMobileSub(null)
   }, [location.pathname])
 
   // Lock scroll (and pause Lenis) while the mobile menu is open
@@ -73,8 +80,8 @@ export default function Header() {
                 <div
                   key={item.to}
                   className="relative"
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
+                  onMouseEnter={() => setOpenMenu(item.dropdown)}
+                  onMouseLeave={() => setOpenMenu(null)}
                 >
                   <NavLink
                     to={item.to}
@@ -93,34 +100,58 @@ export default function Header() {
                   </NavLink>
 
                   <AnimatePresence>
-                    {servicesOpen && (
+                    {openMenu === item.dropdown && (
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute left-1/2 top-full w-[520px] -translate-x-1/2 pt-3"
+                        className={`absolute left-1/2 top-full -translate-x-1/2 pt-3 ${
+                          item.dropdown === 'services' ? 'w-[520px]' : 'w-[320px]'
+                        }`}
                       >
-                        <div className="grid grid-cols-2 gap-1 rounded-2xl border border-cream-300 bg-cream-50 p-3 shadow-card">
-                          {services.map((s) => (
-                            <Link
-                              key={s.slug}
-                              to={`/services#${s.slug}`}
-                              className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-cream-200"
-                            >
-                              <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-900 text-brass-400 transition-colors group-hover:bg-brass-500 group-hover:text-teal-950">
-                                <Icon name={s.icon} className="h-5 w-5" />
-                              </span>
-                              <span>
-                                <span className="block text-sm font-semibold text-teal-900">
-                                  {s.title.split(' (')[0]}
-                                </span>
-                                <span className="mt-0.5 block text-xs leading-snug text-teal-900/60">
-                                  {s.short}
-                                </span>
-                              </span>
-                            </Link>
-                          ))}
+                        <div
+                          className={`gap-1 rounded-2xl border border-cream-300 bg-cream-50 p-3 shadow-card ${
+                            item.dropdown === 'services' ? 'grid grid-cols-2' : 'flex flex-col'
+                          }`}
+                        >
+                          {item.dropdown === 'services'
+                            ? services.map((s) => (
+                                <Link
+                                  key={s.slug}
+                                  to={`/services#${s.slug}`}
+                                  className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-cream-200"
+                                >
+                                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-900 text-brass-400 transition-colors group-hover:bg-brass-500 group-hover:text-teal-950">
+                                    <Icon name={s.icon} className="h-5 w-5" />
+                                  </span>
+                                  <span>
+                                    <span className="block text-sm font-semibold text-teal-900">
+                                      {s.title.split(' (')[0]}
+                                    </span>
+                                    <span className="mt-0.5 block text-xs leading-snug text-teal-900/60">
+                                      {s.short}
+                                    </span>
+                                  </span>
+                                </Link>
+                              ))
+                            : projectMenu.map((m) => (
+                                <Link
+                                  key={m.to}
+                                  to={m.to}
+                                  className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-cream-200"
+                                >
+                                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-900 text-brass-400 transition-colors group-hover:bg-brass-500 group-hover:text-teal-950">
+                                    <Icon name={m.icon} className="h-5 w-5" />
+                                  </span>
+                                  <span>
+                                    <span className="block text-sm font-semibold text-teal-900">{m.label}</span>
+                                    <span className="mt-0.5 block text-xs leading-snug text-teal-900/60">
+                                      {m.desc}
+                                    </span>
+                                  </span>
+                                </Link>
+                              ))}
                         </div>
                       </motion.div>
                     )}
@@ -206,21 +237,21 @@ export default function Header() {
                   <div key={item.to} className="border-b border-cream-100/10">
                     <button
                       type="button"
-                      onClick={() => setMobileServicesOpen((v) => !v)}
-                      aria-expanded={mobileServicesOpen}
+                      onClick={() => setMobileSub((v) => (v === item.dropdown ? null : item.dropdown))}
+                      aria-expanded={mobileSub === item.dropdown}
                       className="flex w-full items-center justify-between py-3.5 text-left font-display text-lg font-medium tracking-tight text-cream-100/90 transition-colors hover:text-brass-300"
                     >
-                      Services
+                      {item.label}
                       <Icon
                         name="arrow"
                         className={`h-4 w-4 text-brass-300 transition-transform duration-300 ${
-                          mobileServicesOpen ? '-rotate-90' : 'rotate-90'
+                          mobileSub === item.dropdown ? '-rotate-90' : 'rotate-90'
                         }`}
                         strokeWidth={2}
                       />
                     </button>
                     <AnimatePresence initial={false}>
-                      {mobileServicesOpen && (
+                      {mobileSub === item.dropdown && (
                         <motion.div
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
@@ -229,22 +260,37 @@ export default function Header() {
                           className="overflow-hidden"
                         >
                           <div className="flex flex-col pb-3">
-                            <Link
-                              to="/services"
-                              className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-sm font-medium text-brass-300 hover:bg-cream-100/5"
-                            >
-                              <Icon name="arrowUpRight" className="h-4 w-4" /> All Services
-                            </Link>
-                            {services.map((s) => (
-                              <Link
-                                key={s.slug}
-                                to={`/services#${s.slug}`}
-                                className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-sm text-cream-100/70 hover:bg-cream-100/5"
-                              >
-                                <Icon name={s.icon} className="h-5 w-5 shrink-0 text-brass-400/90" strokeWidth={1.6} />
-                                {s.title.split(' (')[0]}
-                              </Link>
-                            ))}
+                            {item.dropdown === 'services' ? (
+                              <>
+                                <Link
+                                  to="/services"
+                                  className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-sm font-medium text-brass-300 hover:bg-cream-100/5"
+                                >
+                                  <Icon name="arrowUpRight" className="h-4 w-4" /> All Services
+                                </Link>
+                                {services.map((s) => (
+                                  <Link
+                                    key={s.slug}
+                                    to={`/services#${s.slug}`}
+                                    className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-sm text-cream-100/70 hover:bg-cream-100/5"
+                                  >
+                                    <Icon name={s.icon} className="h-5 w-5 shrink-0 text-brass-400/90" strokeWidth={1.6} />
+                                    {s.title.split(' (')[0]}
+                                  </Link>
+                                ))}
+                              </>
+                            ) : (
+                              projectMenu.map((m) => (
+                                <Link
+                                  key={m.to}
+                                  to={m.to}
+                                  className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-sm text-cream-100/70 hover:bg-cream-100/5"
+                                >
+                                  <Icon name={m.icon} className="h-5 w-5 shrink-0 text-brass-400/90" strokeWidth={1.6} />
+                                  {m.label}
+                                </Link>
+                              ))
+                            )}
                           </div>
                         </motion.div>
                       )}
