@@ -22,7 +22,7 @@ export default function WhyChoose() {
             <img
               src={IMG}
               alt="Holytouch team reviewing plans on site"
-              className="aspect-[4/5] w-full object-cover sm:aspect-[5/4] lg:aspect-[4/5]"
+              className="aspect-[4/3] w-full object-cover sm:aspect-[5/4] lg:aspect-[4/5]"
               loading="lazy"
             />
           </div>
