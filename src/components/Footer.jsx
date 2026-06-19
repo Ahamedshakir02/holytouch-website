@@ -9,6 +9,7 @@ const quickLinks = [
   { label: 'About Us', to: '/about' },
   { label: 'Services', to: '/services' },
   { label: 'Projects', to: '/projects' },
+  { label: 'Gallery', to: '/gallery' },
   { label: 'Our Process', to: '/process' },
   { label: 'Contact', to: '/contact' },
 ]
@@ -51,16 +52,20 @@ export default function Footer() {
               ['facebook', site.social.facebook],
               ['linkedin', site.social.linkedin],
               ['youtube', site.social.youtube],
-            ].map(([label, href]) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream-100/15 text-cream-100/70 transition-colors hover:border-brass-500 hover:text-brass-300"
-              >
-                <Icon name={label} className="h-[18px] w-[18px]" strokeWidth={1.8} />
-              </a>
-            ))}
+            ].map(([label, href]) => {
+              const external = href.startsWith('http')
+              return (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-cream-100/15 text-cream-100/70 transition-colors hover:border-brass-500 hover:text-brass-300"
+                >
+                  <Icon name={label} className="h-[18px] w-[18px]" strokeWidth={1.8} />
+                </a>
+              )
+            })}
           </div>
         </div>
 
