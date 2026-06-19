@@ -10,6 +10,9 @@ import { site } from '../data/site'
 // REPLACE with a real Holytouch site/team photo.
 const IMG =
   'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1100&q=80'
+// Tiny low-res version shown instantly as a blur-up placeholder while the full image loads.
+const IMG_BLUR =
+  'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=200&q=25&blur=100'
 
 export default function WhyChoose() {
   return (
@@ -18,12 +21,16 @@ export default function WhyChoose() {
       <div className="container-px relative grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
         {/* Image side */}
         <Reveal className="relative">
-          <div className="overflow-hidden rounded-3xl">
+          <div
+            className="overflow-hidden rounded-3xl bg-cream-200 bg-cover bg-center"
+            style={{ backgroundImage: `url(${IMG_BLUR})` }}
+          >
             <img
               src={IMG}
               alt="Holytouch team reviewing plans on site"
               className="aspect-[4/3] w-full object-cover sm:aspect-[5/4] lg:aspect-[4/5]"
               loading="lazy"
+              decoding="async"
             />
           </div>
           <CornerFrame />
