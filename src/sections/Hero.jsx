@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { AnimatePresence, motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import Icon from '../components/Icon'
 import { site } from '../data/site'
-import { stats } from '../data/content'
 
 // Hero slideshow — REPLACE with flagship Holytouch project photos (landscape, ~1920px).
 const HERO_IMAGES = [
@@ -11,6 +10,12 @@ const HERO_IMAGES = [
   'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80',
   'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80',
   'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=80',
+]
+
+const meta = [
+  { k: '01', label: 'We Design' },
+  { k: '02', label: 'We Plan' },
+  { k: '03', label: 'We Build' },
 ]
 
 export default function Hero() {
@@ -141,20 +146,25 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom trust-stats bar — credibility at a glance, anchors the hero base */}
+      {/* Bottom hairline meta bar — architectural detail, anchors the hero base */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         className="relative border-t border-cream-100/15"
       >
-        <div className="container-px grid grid-cols-2 gap-y-4 py-6 sm:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.label} className="flex flex-col">
-              <span className="font-display text-2xl font-bold text-brass-400 sm:text-3xl">{s.value}</span>
-              <span className="mt-0.5 text-xs leading-snug text-cream-100/65 sm:text-sm">{s.label}</span>
-            </div>
-          ))}
+        <div className="container-px flex items-center justify-between gap-6 py-5">
+          <ul className="flex flex-wrap items-center gap-x-7 gap-y-1 sm:gap-x-10">
+            {meta.map((m) => (
+              <li key={m.k} className="flex items-baseline gap-2.5">
+                <span className="font-display text-xs font-semibold text-brass-400">{m.k}</span>
+                <span className="text-sm font-medium text-cream-100/80">{m.label}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="hidden text-sm font-medium text-cream-100/55 lg:block">
+            Built on Trust, Delivered with Pride.
+          </p>
         </div>
       </motion.div>
     </section>
