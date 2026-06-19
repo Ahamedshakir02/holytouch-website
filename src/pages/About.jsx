@@ -16,10 +16,13 @@ const HERO = 'https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?auto=
 const STORY_IMG = 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1100&q=80'
 
 const values = [
-  { title: 'Integrity', text: 'Honest estimates and straight answers — always.', icon: 'shield' },
-  { title: 'Craftsmanship', text: 'A relentless attention to detail and finish.', icon: 'spark' },
-  { title: 'Accountability', text: 'One team that owns the outcome end-to-end.', icon: 'check' },
-  { title: 'Client-first', text: 'Your vision and comfort guide every decision.', icon: 'team' },
+  { title: 'Integrity', text: 'Honest estimates and straight answers at every stage.', icon: 'shield' },
+  { title: 'Quality', text: 'Rigorous standards and finishes built to last.', icon: 'check' },
+  { title: 'Innovation', text: 'Smarter, future-ready design and engineering.', icon: 'spark' },
+  { title: 'Sustainability', text: 'Climate-responsive, resource-conscious building.', icon: 'leaf' },
+  { title: 'Client Satisfaction', text: 'Your vision and comfort guide every decision.', icon: 'chat' },
+  { title: 'Safety', text: 'Sound engineering and safe, disciplined sites.', icon: 'hardhat' },
+  { title: 'Teamwork', text: 'One accountable team, working as one.', icon: 'team' },
 ]
 
 export default function About() {
@@ -88,12 +91,12 @@ export default function About() {
           {[
             {
               k: 'Our Mission',
-              t: 'To make building a home simple, transparent and genuinely enjoyable — delivering quality construction and design that exceeds expectations, on time and on budget.',
+              t: 'To deliver integrated architectural, engineering, and construction solutions with excellence, integrity, and innovation — ensuring quality, safety, and value at every stage of the project lifecycle.',
               icon: 'compass',
             },
             {
               k: 'Our Vision',
-              t: "To be Kerala's most trusted one-stop construction and design partner — known for craftsmanship, integrity and homes that stand proudly for generations.",
+              t: 'To be a trusted leader in design, engineering, and construction by creating innovative, sustainable, and high-quality spaces that inspire communities and exceed client expectations.',
               icon: 'spark',
             },
           ].map((m, i) => (
