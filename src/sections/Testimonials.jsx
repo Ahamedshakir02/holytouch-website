@@ -21,7 +21,7 @@ export default function Testimonials() {
           index="(05)"
           eyebrow="Client stories"
           title="Trusted by homeowners across Kerala"
-          intro="Placeholder testimonials — replace with real client quotes and names."
+          intro="What homeowners and developers across Kerala say about building with us."
           className="mx-auto"
         />
 
