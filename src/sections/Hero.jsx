@@ -98,7 +98,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.14 }}
-            className="mt-5 h-7 overflow-hidden"
+            className="mt-4 min-h-[1.5rem] overflow-hidden sm:mt-5"
           >
             <AnimatePresence mode="wait">
               <motion.p
@@ -107,7 +107,7 @@ export default function Hero() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={reduce ? undefined : { y: -24, opacity: 0 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="text-base font-semibold uppercase tracking-[0.18em] text-brass-300/90 sm:text-lg"
+                className="text-[0.8rem] font-semibold uppercase tracking-[0.16em] text-brass-300/90 sm:text-lg"
               >
                 {site.taglines[reduce ? 0 : line]}
               </motion.p>
