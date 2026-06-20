@@ -77,6 +77,44 @@ export const whyChoose = [
   },
 ]
 
+// Company organisation — led by the Managing Directors / Partners.
+// Rendered as a department cards grid on the About page.
+export const orgStructure = [
+  {
+    title: 'Design & Engineering',
+    icon: 'compass',
+    roles: ['Architecture', 'Interior Design', 'Structural Design', 'MEP Design'],
+  },
+  {
+    title: 'Project Execution',
+    icon: 'hammer',
+    roles: ['Project Manager', 'Site Engineers', 'Supervisors', 'Skilled Workforce'],
+  },
+  {
+    title: 'Business Development & Estimation',
+    icon: 'rupee',
+    roles: ['Sales & Marketing', 'Tendering & Estimation'],
+  },
+  {
+    title: 'Administration & Finance',
+    icon: 'clipboard',
+    roles: ['HR & Administration', 'Accounts & Procurement'],
+  },
+]
+
+// Operational project journey shown as a connected stepper on the Process page.
+// Sits beneath the customer-facing 4-step `process` above. Captions are
+// supporting copy — refine as needed.
+export const executionFlow = [
+  { title: 'Client Requirement', icon: 'chat', caption: 'Brief, site context and goals captured.' },
+  { title: 'Design & Planning', icon: 'compass', caption: 'Concept, architecture, structure & MEP.' },
+  { title: 'Approval & Estimation', icon: 'clipboard', caption: 'Itemised costing reviewed and signed off.' },
+  { title: 'Procurement', icon: 'layers', caption: 'Materials and vendors mobilised.' },
+  { title: 'Project Execution', icon: 'hammer', caption: 'Disciplined, supervised construction.' },
+  { title: 'Quality & Safety Check', icon: 'shield', caption: 'Inspections at every milestone.' },
+  { title: 'Project Handover', icon: 'key', caption: 'Snag-free, on-time delivery.' },
+]
+
 export const stats = [
   { value: '12+', label: 'Years of combined experience' },
   { value: '150+', label: 'Projects delivered' },
