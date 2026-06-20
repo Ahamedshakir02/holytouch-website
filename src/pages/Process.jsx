@@ -1,4 +1,4 @@
-import { useRef, Fragment } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useReducedMotion } from 'framer-motion'
 import Seo from '../components/Seo'
 import PageHero from '../components/PageHero'
@@ -8,17 +8,9 @@ import Icon from '../components/Icon'
 import CtaBand from '../sections/CtaBand'
 import BlueprintGrid from '../components/decor/BlueprintGrid'
 import GlowBlob from '../components/decor/GlowBlob'
-import { process, valueProps, executionFlow } from '../data/content'
+import { valueProps, executionFlow } from '../data/content'
 
 const HERO = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=80'
-
-// Extra detail bullets per stage (placeholder copy — refine as needed).
-const stageDetails = {
-  Consult: ['Discovery meeting & site visit', 'Understand needs, lifestyle & budget', 'Feasibility & rough budget range'],
-  Plan: ['Concept & architectural design', 'Structural & MEP coordination', 'Transparent, itemised estimate'],
-  Execute: ['Mobilisation & site setup', 'Quality-supervised construction', 'Regular progress updates'],
-  Deliver: ['Snagging & quality walkthrough', 'On-time, snag-free handover', 'After-care & support'],
-}
 
 export default function Process() {
   const timelineRef = useRef(null)
@@ -32,13 +24,13 @@ export default function Process() {
     <>
       <Seo
         title="Our Process — From Dream to Doorstep"
-        description="The Holytouch 4-step journey: Consult, Plan, Execute, Deliver. A transparent, milestone-driven process that keeps your project on time and stress-free."
+        description="The Holytouch project journey — from client requirement through design, approval, procurement, execution and quality checks to a snag-free handover. A transparent, milestone-driven process."
       />
       <PageHero
         breadcrumb="Process"
         eyebrow="How we work"
         title="A clear path from dream to doorstep"
-        intro="Every Holytouch project follows the same deliberate four-step journey — so you always know what's happening now, and what comes next."
+        intro="Every Holytouch project follows the same clear, milestone-driven journey — so you always know what's happening now, and what comes next."
         image={HERO}
       />
 
@@ -55,73 +47,26 @@ export default function Process() {
             />
 
             <div className="space-y-12">
-              {process.map((p, i) => (
-                <Reveal key={p.step} delay={0.05} className="relative">
+              {executionFlow.map((s, i) => (
+                <Reveal key={s.title} delay={0.05} className="relative">
                   <div className={`flex flex-col gap-6 sm:flex-row sm:items-center ${i % 2 === 1 ? 'sm:flex-row-reverse' : ''}`}>
                     {/* node */}
                     <div className="absolute left-0 flex h-14 w-14 items-center justify-center rounded-full border-4 border-cream-100 bg-teal-900 text-brass-400 sm:left-1/2 sm:-translate-x-1/2">
-                      <Icon name={p.icon} className="h-6 w-6" />
+                      <Icon name={s.icon} className="h-6 w-6" />
                     </div>
 
                     {/* card */}
                     <div className={`ml-20 sm:ml-0 sm:w-[calc(50%-2.5rem)] ${i % 2 === 1 ? 'sm:pr-12 sm:text-right' : 'sm:pl-12'}`}>
-                      <span className="font-display text-sm font-bold text-brass-600">STEP {p.step}</span>
-                      <h3 className="mt-1 font-display text-2xl font-bold text-teal-900">{p.title}</h3>
-                      <p className="mt-1 text-sm font-medium text-teal-900/65">{p.short}</p>
-                      <p className="mt-3 text-base leading-relaxed text-teal-900/70">{p.text}</p>
-                      <ul className={`mt-4 space-y-2 ${i % 2 === 1 ? 'sm:flex sm:flex-col sm:items-end' : ''}`}>
-                        {stageDetails[p.title].map((d) => (
-                          <li key={d} className="flex items-center gap-2 text-sm text-teal-900/75">
-                            <Icon name="check" className="h-4 w-4 shrink-0 text-brass-500" />
-                            {d}
-                          </li>
-                        ))}
-                      </ul>
+                      <span className="font-display text-sm font-bold text-brass-600">STEP {String(i + 1).padStart(2, '0')}</span>
+                      <h3 className="mt-1 font-display text-2xl font-bold text-teal-900">{s.title}</h3>
+                      <p className="mt-1 text-sm font-medium text-teal-900/65">{s.caption}</p>
+                      <p className="mt-3 text-base leading-relaxed text-teal-900/70">{s.text}</p>
                     </div>
                     <div className="hidden sm:block sm:w-[calc(50%-2.5rem)]" />
                   </div>
                 </Reveal>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Execution flow — operational stages behind the journey */}
-      <section className="bg-cream-200 section-y">
-        <div className="container-px">
-          <SectionHeading
-            align="center"
-            eyebrow="Behind the scenes"
-            title="How a project moves through our team"
-            intro="Underneath the four-step journey, every project flows through seven operational stages — from your first requirement to a finished handover."
-            className="mx-auto"
-          />
-          <div className="mt-14 flex flex-col items-stretch gap-3 lg:flex-row lg:flex-wrap lg:justify-center">
-            {executionFlow.map((s, i) => (
-              <Fragment key={s.title}>
-                <Reveal
-                  delay={i * 0.06}
-                  className="group relative flex flex-col rounded-2xl border border-cream-300 bg-cream-50 p-6 lg:min-w-[150px] lg:max-w-[200px] lg:flex-1"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-display text-3xl font-bold text-teal-900/10 transition-colors group-hover:text-brass-500/30">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-teal-900 text-brass-400">
-                      <Icon name={s.icon} className="h-5 w-5" />
-                    </span>
-                  </div>
-                  <h3 className="mt-4 font-display text-base font-semibold text-teal-900">{s.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-teal-900/60">{s.caption}</p>
-                </Reveal>
-                {i < executionFlow.length - 1 && (
-                  <div className="flex shrink-0 items-center justify-center text-brass-500" aria-hidden="true">
-                    <Icon name="arrow" className="h-5 w-5 rotate-90 lg:rotate-0" strokeWidth={2.5} />
-                  </div>
-                )}
-              </Fragment>
-            ))}
           </div>
         </div>
       </section>

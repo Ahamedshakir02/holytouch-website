@@ -17,7 +17,7 @@ export default function ProcessSection() {
             index="(02)"
             eyebrow="Our process"
             title="A clear path from dream to doorstep"
-            intro="Four deliberate stages keep your project transparent, on schedule and stress-free — you always know what's happening and what's next."
+            intro="At a glance, here's how every project moves from first consultation to final handover — explore the journey for the full step-by-step process."
           />
           <Reveal>
             <Link to="/process" className="btn-ghost-light shrink-0">

@@ -102,17 +102,52 @@ export const orgStructure = [
   },
 ]
 
-// Operational project journey shown as a connected stepper on the Process page.
-// Sits beneath the customer-facing 4-step `process` above. Captions are
-// supporting copy — refine as needed.
+// Operational project journey shown as the timeline on the Process page.
+// `caption` is a short subtitle; `text` is the full explanation. Copy is
+// editable marketing text — refine as needed.
 export const executionFlow = [
-  { title: 'Client Requirement', icon: 'chat', caption: 'Brief, site context and goals captured.' },
-  { title: 'Design & Planning', icon: 'compass', caption: 'Concept, architecture, structure & MEP.' },
-  { title: 'Approval & Estimation', icon: 'clipboard', caption: 'Itemised costing reviewed and signed off.' },
-  { title: 'Procurement', icon: 'layers', caption: 'Materials and vendors mobilised.' },
-  { title: 'Project Execution', icon: 'hammer', caption: 'Disciplined, supervised construction.' },
-  { title: 'Quality & Safety Check', icon: 'shield', caption: 'Inspections at every milestone.' },
-  { title: 'Project Handover', icon: 'key', caption: 'Snag-free, on-time delivery.' },
+  {
+    title: 'Client Requirement',
+    icon: 'chat',
+    caption: 'Brief, site context and goals captured.',
+    text: 'We begin by listening. Through a detailed discussion and a site visit, we understand your vision, lifestyle needs, plot conditions and budget — setting a clear brief and realistic expectations before any design work begins.',
+  },
+  {
+    title: 'Design & Planning',
+    icon: 'compass',
+    caption: 'Concept, architecture, structure & MEP.',
+    text: 'Our architects and engineers turn the brief into concept designs, floor plans and 3D visuals, fully coordinated with structural and MEP planning. We refine it together until the design balances aesthetics, function and buildability.',
+  },
+  {
+    title: 'Approval & Estimation',
+    icon: 'clipboard',
+    caption: 'Itemised costing reviewed and signed off.',
+    text: 'We prepare a transparent, itemised cost estimate and project schedule, and handle the statutory drawings and permit approvals. You review and sign off on a clear scope before work starts — no hidden costs or surprises.',
+  },
+  {
+    title: 'Procurement',
+    icon: 'layers',
+    caption: 'Materials and vendors mobilised.',
+    text: 'We source quality-checked materials and engage vetted vendors and subcontractors at the right time, locking in rates and lead times. Disciplined procurement keeps the site supplied without delays or budget creep.',
+  },
+  {
+    title: 'Project Execution',
+    icon: 'hammer',
+    caption: 'Disciplined, supervised construction.',
+    text: 'Construction proceeds under tight site management, led by a dedicated project manager and site engineers. Work follows the approved drawings with continuous supervision and regular progress updates to you at every milestone.',
+  },
+  {
+    title: 'Quality & Safety Check',
+    icon: 'shield',
+    caption: 'Inspections at every milestone.',
+    text: 'At each stage we run structured quality inspections and enforce strict site-safety standards. Materials, workmanship and finishes are checked against specification, so issues are caught and corrected early — not after handover.',
+  },
+  {
+    title: 'Project Handover',
+    icon: 'key',
+    caption: 'Snag-free, on-time delivery.',
+    text: 'After a thorough snagging walkthrough and final quality check, we hand over a clean, completed project on schedule — along with documentation and after-care support, so you can move in with complete confidence.',
+  },
 ]
 
 export const stats = [
