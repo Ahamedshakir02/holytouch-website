@@ -100,15 +100,22 @@ export default function Footer() {
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-wider text-cream-100">Get in touch</h3>
           <ul className="mt-5 space-y-3 text-sm">
-            {site.phones.map((p) => (
-              <li key={p.value} className="flex items-center gap-2.5">
-                <Icon name={p.whatsapp ? 'whatsapp' : 'phone'} className="h-4 w-4 text-brass-400" />
-                <a href={`tel:${p.value}`} className="transition-colors hover:text-brass-300">
-                  {p.label}
-                </a>
-                {p.whatsapp && <span className="text-[10px] uppercase tracking-wide text-brass-300/70">WhatsApp</span>}
-              </li>
-            ))}
+            {site.phones.map((p) => {
+              const href = p.whatsapp ? whatsappLink(p.value.replace('+', '')) : `tel:${p.value}`
+              return (
+                <li key={p.value} className="flex items-center gap-2.5">
+                  <Icon name={p.whatsapp ? 'whatsapp' : 'phone'} className="h-4 w-4 text-brass-400" />
+                  <a
+                    href={href}
+                    {...(p.whatsapp ? { target: '_blank', rel: 'noreferrer' } : {})}
+                    className="transition-colors hover:text-brass-300"
+                  >
+                    {p.label}
+                  </a>
+                  {p.whatsapp && <span className="text-[10px] uppercase tracking-wide text-brass-300/70">WhatsApp</span>}
+                </li>
+              )
+            })}
             <li className="flex items-center gap-2.5">
               <Icon name="mail" className="h-4 w-4 text-brass-400" />
               <a href={`mailto:${site.email}`} className="transition-colors hover:text-brass-300">
