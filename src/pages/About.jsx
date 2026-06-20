@@ -8,7 +8,7 @@ import CountUp from '../components/CountUp'
 import BlueprintGrid from '../components/decor/BlueprintGrid'
 import GlowBlob from '../components/decor/GlowBlob'
 import CornerFrame from '../components/decor/CornerFrame'
-import { whyChoose, stats } from '../data/content'
+import { whyChoose, stats, orgStructure } from '../data/content'
 import { site } from '../data/site'
 
 // Construction site — building under construction (swap for a real Holytouch site photo).
@@ -108,6 +108,43 @@ export default function About() {
               <p className="mt-3 leading-relaxed text-cream-100/70">{m.t}</p>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* Company structure */}
+      <section className="bg-cream-100 section-y relative overflow-hidden">
+        <BlueprintGrid className="opacity-[0.04]" />
+        <GlowBlob className="-right-28 top-10 h-80 w-80" />
+        <div className="container-px relative">
+          <SectionHeading
+            align="center"
+            eyebrow="How we're organised"
+            title="One team, four disciplines"
+            intro="Led by our Managing Directors and Partners, every project draws on four in-house departments — so design, execution, business and administration stay accountable to one team."
+            className="mx-auto"
+          />
+          <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {orgStructure.map((d, i) => (
+              <Reveal
+                key={d.title}
+                delay={i * 0.08}
+                className="card-hover flex flex-col rounded-2xl border border-cream-300 bg-cream-50 p-7"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brass-100 text-brass-600">
+                  <Icon name={d.icon} className="h-6 w-6" />
+                </span>
+                <h3 className="mt-5 font-display text-lg font-semibold text-teal-900">{d.title}</h3>
+                <ul className="mt-4 space-y-2.5">
+                  {d.roles.map((role) => (
+                    <li key={role} className="flex items-center gap-2 text-sm text-teal-900/70">
+                      <Icon name="check" className="h-4 w-4 shrink-0 text-brass-500" />
+                      {role}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
