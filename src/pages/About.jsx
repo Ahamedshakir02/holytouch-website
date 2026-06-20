@@ -50,25 +50,23 @@ export default function About() {
             <div className="mt-6 space-y-4 text-base leading-relaxed text-teal-900/70">
               <p>
                 Holytouch — Your Perfect Builder is a multidisciplinary construction and design
-                company committed to delivering innovative, sustainable, and high-quality building
-                solutions. With expertise in Architecture, Interior Design, Structural Engineering,
-                MEP Design, Landscape Design, Project Management, and Construction Execution, we
-                provide complete turnkey solutions tailored to our clients' needs.
+                company delivering innovative, sustainable and high-quality buildings. From
+                architecture, interiors, structural and MEP design to landscaping, project management
+                and construction, we provide complete turnkey solutions tailored to each client.
               </p>
               <p>
-                Our team of experienced architects, engineers, designers, and project managers work
-                together to transform ideas into exceptional spaces. From concept development and
-                planning to execution and project handover, we ensure precision, quality, and client
-                satisfaction at every stage.
+                Our architects, engineers, designers and project managers work as one team to turn
+                ideas into exceptional spaces — ensuring precision, quality and client satisfaction
+                from first concept to final handover.
               </p>
               <p>
-                We specialise in residential, commercial, institutional, and infrastructure projects,
-                combining modern design principles with advanced construction practices to create
-                spaces that are functional, aesthetically pleasing, and built to last.
+                We work across residential, commercial, institutional and infrastructure projects,
+                pairing modern design with advanced construction to create spaces that are
+                functional, beautiful and built to last.
               </p>
               <p>
-                At Holytouch, we believe every project is more than just a structure — it is a
-                reflection of our commitment to excellence, innovation, and trust.
+                At Holytouch, every project is more than a structure — it reflects our commitment to
+                excellence, innovation and trust.
               </p>
             </div>
           </Reveal>
@@ -178,9 +176,9 @@ export default function About() {
             title="The values behind every project"
             className="mx-auto"
           />
-          <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 flex flex-wrap justify-center gap-5">
             {values.map((v, i) => (
-              <Reveal key={v.title} delay={i * 0.08} className="card-hover rounded-2xl border border-cream-300 bg-cream-50 p-7 text-center">
+              <Reveal key={v.title} delay={i * 0.08} className="card-hover w-full rounded-2xl border border-cream-300 bg-cream-50 p-7 text-center sm:w-[calc(50%-10px)] lg:w-[calc(25%-15px)]">
                 <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-brass-100 text-brass-600">
                   <Icon name={v.icon} className="h-6 w-6" />
                 </span>
