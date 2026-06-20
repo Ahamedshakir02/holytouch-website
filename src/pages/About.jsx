@@ -9,7 +9,6 @@ import BlueprintGrid from '../components/decor/BlueprintGrid'
 import GlowBlob from '../components/decor/GlowBlob'
 import CornerFrame from '../components/decor/CornerFrame'
 import { whyChoose, stats, orgStructure } from '../data/content'
-import { site } from '../data/site'
 
 // Construction site — building under construction (swap for a real Holytouch site photo).
 const HERO = 'https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?auto=format&fit=crop&w=1920&q=80'
@@ -50,20 +49,26 @@ export default function About() {
             </h2>
             <div className="mt-6 space-y-4 text-base leading-relaxed text-teal-900/70">
               <p>
-                Holytouch was founded on a simple belief: building a home should feel inspiring, not
-                stressful. Too many projects stall because design, engineering, interiors and
-                construction are scattered across disconnected vendors.
+                Holytouch — Your Perfect Builder is a multidisciplinary construction and design
+                company committed to delivering innovative, sustainable, and high-quality building
+                solutions. With expertise in Architecture, Interior Design, Structural Engineering,
+                MEP Design, Landscape Design, Project Management, and Construction Execution, we
+                provide complete turnkey solutions tailored to our clients' needs.
               </p>
               <p>
-                So we built a different kind of firm — one that brings architecture, structure, MEP,
-                interiors, landscape and project management together under a single, accountable
-                roof. From the first consultation to the final handover, you deal with one team that
-                owns the outcome.
+                Our team of experienced architects, engineers, designers, and project managers work
+                together to transform ideas into exceptional spaces. From concept development and
+                planning to execution and project handover, we ensure precision, quality, and client
+                satisfaction at every stage.
               </p>
               <p>
-                Based in {site.location}, we design and build climate-responsive homes and spaces
-                that balance beauty, function and lasting value — delivered transparently, and always
-                on our word.
+                We specialise in residential, commercial, institutional, and infrastructure projects,
+                combining modern design principles with advanced construction practices to create
+                spaces that are functional, aesthetically pleasing, and built to last.
+              </p>
+              <p>
+                At Holytouch, we believe every project is more than just a structure — it is a
+                reflection of our commitment to excellence, innovation, and trust.
               </p>
             </div>
           </Reveal>
