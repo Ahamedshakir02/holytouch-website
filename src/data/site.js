@@ -10,6 +10,11 @@ export const site = {
   ],
   website: 'www.holytouch.in',
   location: 'Kerala, India',
+  address: 'Palakkad – Ponnani Rd, Edappal, Vattamkulam, Kerala 679578',
+  mapUrl: 'https://maps.app.goo.gl/nwuCTXixEqNZAwgD6',
+  // No-API-key Google Maps embed pinned to the business listing.
+  mapEmbed:
+    'https://maps.google.com/maps?q=Holytouch+Design+Build+Contractor,+Palakkad+-+Ponnani+Rd,+Edappal,+Vattamkulam,+Kerala+679578&z=15&output=embed',
   email: 'info@holytouch.in', // TODO: confirm real email
   phones: [
     { label: '+91 88912 07208', value: '+918891207208', whatsapp: false },

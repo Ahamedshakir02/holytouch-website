@@ -155,10 +155,15 @@ export default function Contact() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-5 flex items-start gap-2.5 border-t border-cream-300 pt-5 text-sm text-teal-900/70">
+                <a
+                  href={site.mapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 flex items-start gap-2.5 border-t border-cream-300 pt-5 text-sm text-teal-900/70 transition-colors hover:text-brass-700"
+                >
                   <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-brass-600" />
-                  <span>{site.location} — serving clients across the state.</span>
-                </div>
+                  <span>{site.address} — serving clients across Kerala.</span>
+                </a>
               </div>
             </div>
           </Reveal>
@@ -168,16 +173,24 @@ export default function Contact() {
         <div className="container-px relative mt-12">
           <Reveal>
             <div className="overflow-hidden rounded-3xl border border-cream-300 shadow-soft">
-              <div className="flex items-center gap-2.5 border-b border-cream-300 bg-cream-50 px-6 py-4">
-                <Icon name="pin" className="h-5 w-5 text-brass-600" />
+              <div className="flex flex-wrap items-center gap-2.5 border-b border-cream-300 bg-cream-50 px-6 py-4">
+                <Icon name="pin" className="h-5 w-5 shrink-0 text-brass-600" />
                 <p className="font-display text-base font-semibold text-teal-900">
-                  Find us — {site.location}
+                  Find us — {site.address}
                 </p>
+                <a
+                  href={site.mapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="ml-auto inline-flex items-center gap-1.5 text-sm font-semibold text-brass-700 transition-colors hover:text-brass-600"
+                >
+                  Open in Google Maps <Icon name="arrow" className="h-3.5 w-3.5" strokeWidth={2} />
+                </a>
               </div>
               <div className="aspect-[16/9] w-full sm:aspect-[16/7]">
                 <iframe
                   title="Holytouch location on Google Maps"
-                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2155.3334706341475!2d76.01776156959502!3d10.78477894867784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTDCsDQ3JzA0LjMiTiA3NsKwMDEnMDguOCJF!5e0!3m2!1sen!2sin!4v1781809469829!5m2!1sen!2sin"
+                  src={site.mapEmbed}
                   className="h-full w-full"
                   style={{ border: 0 }}
                   allowFullScreen

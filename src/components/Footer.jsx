@@ -124,7 +124,14 @@ export default function Footer() {
             </li>
             <li className="flex items-start gap-2.5">
               <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-brass-400" />
-              <span>{site.location}</span>
+              <a
+                href={site.mapUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-brass-300"
+              >
+                {site.address}
+              </a>
             </li>
           </ul>
         </div>
