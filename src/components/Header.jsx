@@ -106,7 +106,7 @@ export default function Header() {
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
                         className={`absolute left-1/2 top-full -translate-x-1/2 pt-3 ${
-                          item.dropdown === 'services' ? 'w-[520px]' : 'w-[320px]'
+                          item.dropdown === 'services' ? 'w-[min(520px,92vw)]' : 'w-[min(320px,90vw)]'
                         }`}
                       >
                         <div

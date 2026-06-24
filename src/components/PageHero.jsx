@@ -12,7 +12,7 @@ export default function PageHero({ eyebrow, title, intro, image, breadcrumb }) {
   const scale = useTransform(scrollYProgress, [0, 1], [1.04, reduce ? 1.04 : 1.16])
 
   return (
-    <section ref={ref} className="relative flex min-h-[100svh] flex-col overflow-hidden bg-teal-950 text-cream-100">
+    <section ref={ref} className="relative flex min-h-screen min-h-[100svh] flex-col overflow-hidden bg-teal-950 text-cream-100">
       {/* Parallax image — covers the full first screen */}
       {image && (
         <motion.div style={{ y, scale }} className="absolute inset-0">
