@@ -12,6 +12,9 @@ import { projects, categories, statuses } from '../data/projects'
 
 const HERO = 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1920&q=80'
 
+// Flip to true once real project photos are added to src/data/projects.js
+const PORTFOLIO_LIVE = false
+
 const STATUS_TABS = ['All', ...statuses]
 const slugToStatus = { ongoing: 'Ongoing', completed: 'Completed', upcoming: 'Upcoming' }
 const STATUS_DOT = {
@@ -91,50 +94,70 @@ export default function Projects() {
             </div>
           </div>
 
-          {/* Grid */}
-          <motion.div layout className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <AnimatePresence mode="popLayout">
-              {filtered.map((p) => (
-                <motion.button
-                  layout
-                  key={p.id}
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.35 }}
-                  onClick={() => setActive(p)}
-                  className="group relative block overflow-hidden rounded-2xl text-left"
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={p.image}
-                      alt={p.title}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-950/90 via-teal-950/10 to-transparent opacity-90" />
-                  <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-teal-950/70 px-3 py-1 text-[11px] font-semibold text-cream-100 backdrop-blur">
-                    <span className={`h-1.5 w-1.5 rounded-full ${STATUS_DOT[p.status]}`} />
-                    {p.status}
-                  </span>
-                  <div className="absolute inset-x-0 bottom-0 p-5">
-                    <span className="inline-flex rounded-full bg-brass-500/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-teal-950">
-                      {p.category}
-                    </span>
-                  </div>
-                  <span className="absolute right-4 top-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-cream-100 text-teal-900 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
-                    <Icon name="arrowUpRight" className="h-5 w-5" strokeWidth={2} />
-                  </span>
-                </motion.button>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+          {PORTFOLIO_LIVE ? (
+            <>
+              {/* Grid */}
+              <motion.div layout className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <AnimatePresence mode="popLayout">
+                  {filtered.map((p) => (
+                    <motion.button
+                      layout
+                      key={p.id}
+                      initial={{ opacity: 0, scale: 0.96 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.96 }}
+                      transition={{ duration: 0.35 }}
+                      onClick={() => setActive(p)}
+                      className="group relative block overflow-hidden rounded-2xl text-left"
+                    >
+                      <div className="aspect-[4/3] overflow-hidden">
+                        <img
+                          src={p.image}
+                          alt={p.title}
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-teal-950/90 via-teal-950/10 to-transparent opacity-90" />
+                      <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-teal-950/70 px-3 py-1 text-[11px] font-semibold text-cream-100 backdrop-blur">
+                        <span className={`h-1.5 w-1.5 rounded-full ${STATUS_DOT[p.status]}`} />
+                        {p.status}
+                      </span>
+                      <div className="absolute inset-x-0 bottom-0 p-5">
+                        <span className="inline-flex rounded-full bg-brass-500/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-teal-950">
+                          {p.category}
+                        </span>
+                      </div>
+                      <span className="absolute right-4 top-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-cream-100 text-teal-900 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+                        <Icon name="arrowUpRight" className="h-5 w-5" strokeWidth={2} />
+                      </span>
+                    </motion.button>
+                  ))}
+                </AnimatePresence>
+              </motion.div>
 
-          {filtered.length === 0 && (
-            <p className="mt-12 rounded-2xl border border-cream-300 bg-cream-50 p-10 text-center text-sm text-teal-900/60">
-              No projects in this view yet — check back soon.
-            </p>
+              {filtered.length === 0 && (
+                <p className="mt-12 rounded-2xl border border-cream-300 bg-cream-50 p-10 text-center text-sm text-teal-900/60">
+                  No projects in this view yet — check back soon.
+                </p>
+              )}
+            </>
+          ) : (
+            <div className="mt-10 flex flex-col items-center rounded-3xl border border-cream-300 bg-cream-50 px-6 py-16 text-center sm:py-20">
+              <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-teal-900 text-brass-400">
+                <Icon name="hammer" className="h-8 w-8" />
+              </span>
+              <h3 className="mt-6 font-display text-2xl font-bold text-teal-900 sm:text-3xl">
+                Our portfolio is being updated
+              </h3>
+              <p className="mt-3 max-w-md text-teal-900/65">
+                We're putting together our latest projects — they'll be available here soon.
+                In the meantime, let's talk about yours.
+              </p>
+              <Link to="/contact" className="btn-primary mt-8">
+                Get a Free Consultation <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
+              </Link>
+            </div>
           )}
         </div>
       </section>

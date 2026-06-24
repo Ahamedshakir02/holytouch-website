@@ -1,5 +1,7 @@
 // PLACEHOLDER PROJECTS — swap `image`, `title`, `location`, `meta` with real
 // Holytouch project photos & details. Images are Unsplash placeholders.
+// To use your own photos, drop files into public/images/projects/ and set
+// `image: '/images/projects/<name>.jpg'`. See public/images/projects/README.md.
 const img = (id, w = 1200) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`
 
@@ -17,7 +19,7 @@ export const projects = [
     location: 'Thrissur, Kerala',
     year: '2024',
     area: '3,200 sq.ft',
-    image: img('1600585154340-be6161a56a0c'),
+    image: img('1523217582562-09d0def993a6'), // home card · Residential · swap → '/images/projects/aranya-villa.jpg'
     summary:
       'A contemporary tropical villa organised around a shaded central courtyard, blending exposed concrete with warm teak.',
   },
@@ -29,7 +31,7 @@ export const projects = [
     location: 'Kochi, Kerala',
     year: '2023',
     area: '4,100 sq.ft',
-    image: img('1512917774080-9991f1c4c750'),
+    image: img('1512917774080-9991f1c4c750'), // home card · Residential · swap → '/images/projects/lakeside-residence.jpg'
     summary:
       'A double-height living pavilion that frames uninterrupted backwater views with deep sun-shading verandahs.',
   },
@@ -41,7 +43,7 @@ export const projects = [
     location: 'Kozhikode, Kerala',
     year: '2025',
     area: '9,000 sq.ft',
-    image: img('1518780664697-55e3ad937233'),
+    image: img('1524414139215-35c99f80112d'), // home card · Commercial · swap → '/images/projects/meridian-offices.jpg'
     summary:
       'A low-rise, naturally ventilated workspace wrapped around a shaded courtyard — built for the Kerala climate.',
   },
@@ -53,7 +55,7 @@ export const projects = [
     location: 'Alappuzha, Kerala',
     year: '2022',
     area: '7,500 sq.ft',
-    image: img('1449844908441-8829872d2607'),
+    image: img('1486406146926-c627a92ad1ab'), // home card · Commercial · swap → '/images/projects/terra-retail.jpg'
     summary:
       'A boutique hospitality project blending traditional Kerala forms with contemporary comfort, set amid greenery.',
   },
@@ -65,7 +67,7 @@ export const projects = [
     location: 'Kochi, Kerala',
     year: '2025',
     area: '2,400 sq.ft',
-    image: img('1600607687939-ce8a6c25118c'),
+    image: img('1649083048770-82e8ffd80431'), // home card · Interior · swap → '/images/projects/noor-interior.jpg'
     summary:
       'A warm, layered interior scheme with bespoke joinery, concealed lighting and natural stone surfaces.',
   },
