@@ -77,8 +77,8 @@ export default function About() {
                 <img src={STORY_IMG} alt="Holytouch project in progress" className="aspect-[4/3] w-full object-cover" loading="lazy" />
               </div>
               <CornerFrame />
-              <div className="absolute -bottom-6 -left-4 rounded-2xl bg-brass-500 p-6 text-teal-950 shadow-card sm:-left-6">
-                <p className="font-display text-4xl font-bold">150+</p>
+              <div className="absolute -bottom-5 -left-2 rounded-2xl bg-brass-500 p-5 text-teal-950 shadow-card sm:-bottom-6 sm:-left-6 sm:p-6">
+                <p className="font-display text-3xl font-bold sm:text-4xl">150+</p>
                 <p className="text-sm font-semibold">Projects delivered</p>
               </div>
             </div>

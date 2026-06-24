@@ -122,10 +122,6 @@ export default function Projects() {
                     <span className="inline-flex rounded-full bg-brass-500/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-teal-950">
                       {p.category}
                     </span>
-                    <h3 className="mt-2.5 font-display text-lg font-bold text-cream-100">{p.title}</h3>
-                    <p className="flex items-center gap-1.5 text-sm text-cream-100/70">
-                      <Icon name="pin" className="h-4 w-4 text-brass-300" /> {p.location}
-                    </p>
                   </div>
                   <span className="absolute right-4 top-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-cream-100 text-teal-900 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
                     <Icon name="arrowUpRight" className="h-5 w-5" strokeWidth={2} />
