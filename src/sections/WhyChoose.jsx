@@ -35,7 +35,7 @@ export default function WhyChoose() {
           </div>
           <CornerFrame />
           {/* Promise badge */}
-          <div className="absolute -bottom-6 left-6 max-w-[15rem] rounded-2xl bg-teal-900 p-6 text-cream-100 shadow-card sm:left-auto sm:right-6">
+          <div className="absolute -bottom-6 left-4 max-w-[13rem] rounded-2xl bg-teal-900 p-5 text-cream-100 shadow-card sm:left-auto sm:right-6 sm:max-w-[15rem] sm:p-6">
             <Icon name="shield" className="h-8 w-8 text-brass-400" />
             <p className="mt-3 font-display text-lg font-semibold leading-snug">
               Built on Trust, Delivered with Pride.

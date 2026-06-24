@@ -45,7 +45,7 @@ export default function Hero() {
   }, [reduce])
 
   return (
-    <section ref={ref} className="relative flex min-h-[100svh] flex-col overflow-hidden bg-teal-950">
+    <section ref={ref} className="relative flex min-h-screen min-h-[100svh] flex-col overflow-hidden bg-teal-950">
       {/* Parallax cross-fade slideshow — covers the full first screen */}
       <motion.div style={{ y, scale }} className="absolute inset-0">
         {reduce ? (
