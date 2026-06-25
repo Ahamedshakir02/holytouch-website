@@ -10,14 +10,14 @@ import GlowBlob from '../components/decor/GlowBlob'
 import CornerFrame from '../components/decor/CornerFrame'
 import { services } from '../data/services'
 
-const HERO = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80'
+const HERO = 'https://images.unsplash.com/photo-1503387837-b154d5074bd2?auto=format&fit=crop&w=1920&q=80'
 
 // Per-service imagery — REPLACE with real photos per service.
 const serviceImages = {
   contractor: '1504307651254-35680f356dfd',
-  'design-consultancy': '1581092160562-40aa08e78837',
-  'structural-architectural-design': '1503387762-592deb58ef4e',
-  mep: '1581092918056-0c4c3acd3789',
+  'design-consultancy': '1581674662583-5e89b374fae6',
+  'structural-architectural-design': '1542621334-a254cf47733d',
+  mep: '1545193329-4a052e14eb8f',
   'interior-design': '1600210492493-0946911123ea',
   'landscape-design': '1558904541-efa843a96f01',
   pmc: '1454165804606-c3d57bc86b40',
