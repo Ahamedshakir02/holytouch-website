@@ -50,7 +50,6 @@ export default function Testimonials() {
                     ))}
                   </div>
                   <p className="mt-3 font-semibold text-teal-900">{t.name}</p>
-                  <p className="text-sm text-teal-900/65">{t.role}</p>
                 </footer>
               </motion.blockquote>
             </AnimatePresence>
