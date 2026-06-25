@@ -9,10 +9,10 @@ import { site } from '../data/site'
 
 // REPLACE with a real Holytouch site/team photo.
 const IMG =
-  'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1100&q=80'
+  'https://images.unsplash.com/photo-1503387837-b154d5074bd2?auto=format&fit=crop&w=1100&q=80'
 // Tiny low-res version shown instantly as a blur-up placeholder while the full image loads.
 const IMG_BLUR =
-  'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=200&q=25&blur=100'
+  'https://images.unsplash.com/photo-1503387837-b154d5074bd2?auto=format&fit=crop&w=200&q=25&blur=100'
 
 export default function WhyChoose() {
   return (
