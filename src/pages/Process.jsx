@@ -2,13 +2,9 @@ import { useRef } from 'react'
 import { motion, useScroll, useReducedMotion } from 'framer-motion'
 import Seo from '../components/Seo'
 import PageHero from '../components/PageHero'
-import SectionHeading from '../components/SectionHeading'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
-import CtaBand from '../sections/CtaBand'
-import BlueprintGrid from '../components/decor/BlueprintGrid'
-import GlowBlob from '../components/decor/GlowBlob'
-import { valueProps, executionFlow } from '../data/content'
+import { executionFlow } from '../data/content'
 
 const HERO = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=80'
 
@@ -70,34 +66,6 @@ export default function Process() {
           </div>
         </div>
       </section>
-
-      {/* What you get / value props */}
-      <section className="section-y relative overflow-hidden bg-teal-950 text-cream-100">
-        <BlueprintGrid variant="dark" className="opacity-[0.05]" />
-        <GlowBlob className="-left-24 top-10 h-80 w-80" />
-        <div className="container-px relative">
-          <SectionHeading
-            light
-            align="center"
-            eyebrow="What this means for you"
-            title="A build experience designed around your peace of mind"
-            className="mx-auto"
-          />
-          <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {valueProps.map((v, i) => (
-              <Reveal key={v.title} delay={i * 0.08} className="rounded-2xl border border-cream-100/10 bg-teal-900 p-7">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brass-500 text-teal-950">
-                  <Icon name={v.icon} className="h-6 w-6" />
-                </span>
-                <h3 className="mt-5 font-display text-lg font-semibold">{v.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-cream-100/65">{v.text}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CtaBand />
     </>
   )
 }
