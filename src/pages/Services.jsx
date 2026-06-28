@@ -4,7 +4,6 @@ import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 import ProcessSection from '../sections/ProcessSection'
-import CtaBand from '../sections/CtaBand'
 import BlueprintGrid from '../components/decor/BlueprintGrid'
 import GlowBlob from '../components/decor/GlowBlob'
 import CornerFrame from '../components/decor/CornerFrame'
@@ -119,7 +118,6 @@ export default function Services() {
       </div>
 
       <ProcessSection />
-      <CtaBand />
     </>
   )
 }
