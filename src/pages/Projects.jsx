@@ -5,7 +5,6 @@ import Seo from '../components/Seo'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
-import CtaBand from '../sections/CtaBand'
 import BlueprintGrid from '../components/decor/BlueprintGrid'
 import GlowBlob from '../components/decor/GlowBlob'
 import { projects, categories, statuses } from '../data/projects'
@@ -166,8 +165,6 @@ export default function Projects() {
       <AnimatePresence>
         {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
       </AnimatePresence>
-
-      <CtaBand />
     </>
   )
 }
