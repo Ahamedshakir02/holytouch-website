@@ -1,9 +1,6 @@
-import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
-import Icon from '../components/Icon'
 import ContourLines from '../components/decor/ContourLines'
 import GlowBlob from '../components/decor/GlowBlob'
-import { site, whatsappLink } from '../data/site'
 
 // REPLACE with a wide architectural hero photo.
 const IMG =
@@ -28,22 +25,6 @@ export default function CtaBand() {
             Book a free, no-obligation consultation. Tell us your vision and budget, and we'll show
             you exactly how Holytouch can bring it to life.
           </p>
-          <div className="mt-9 flex flex-wrap justify-center gap-4">
-            <Link to="/contact" className="btn-primary text-base">
-              Get a Free Consultation <Icon name="arrow" className="h-4 w-4" strokeWidth={2} />
-            </Link>
-            <a href={`tel:${site.phones[0].value}`} className="btn-ghost-light text-base">
-              <Icon name="phone" className="h-4 w-4" /> {site.phones[0].label}
-            </a>
-          </div>
-          <a
-            href={whatsappLink()}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brass-300 hover:text-brass-200"
-          >
-            <Icon name="whatsapp" className="h-4 w-4" /> Or message us on WhatsApp
-          </a>
         </Reveal>
       </div>
     </section>
