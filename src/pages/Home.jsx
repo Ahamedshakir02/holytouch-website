@@ -6,7 +6,6 @@ import ProcessSection from '../sections/ProcessSection'
 import WhyChoose from '../sections/WhyChoose'
 import FeaturedProjects from '../sections/FeaturedProjects'
 import Testimonials from '../sections/Testimonials'
-import CtaBand from '../sections/CtaBand'
 import Marquee from '../components/decor/Marquee'
 
 const marqueeItems = [
@@ -36,7 +35,6 @@ export default function Home() {
       <WhyChoose />
       <FeaturedProjects />
       <Testimonials />
-      <CtaBand />
     </>
   )
 }
