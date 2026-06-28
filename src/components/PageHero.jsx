@@ -59,9 +59,6 @@ export default function PageHero({ eyebrow, title, intro, image, breadcrumb }) {
             <span className="font-display text-xs font-semibold text-brass-400">HT</span>
             {breadcrumb || 'Holytouch'}
           </span>
-          <p className="hidden text-sm font-medium text-cream-100/55 lg:block">
-            Built on Trust, Delivered with Pride.
-          </p>
         </div>
       </motion.div>
     </section>
