@@ -3,13 +3,11 @@ import Seo from '../components/Seo'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
-import ProcessSection from '../sections/ProcessSection'
-import BlueprintGrid from '../components/decor/BlueprintGrid'
-import GlowBlob from '../components/decor/GlowBlob'
 import CornerFrame from '../components/decor/CornerFrame'
 import { services } from '../data/services'
 
-const HERO = 'https://images.unsplash.com/photo-1503387837-b154d5074bd2?auto=format&fit=crop&w=1920&q=80'
+// REPLACE with a real Holytouch project/site banner photo.
+const HERO = 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1920&q=80'
 
 // Per-service imagery — REPLACE with real photos per service.
 const serviceImages = {
@@ -19,8 +17,8 @@ const serviceImages = {
   mep: '1545193329-4a052e14eb8f',
   'interior-design': '1600210492493-0946911123ea',
   'landscape-design': '1558904541-efa843a96f01',
-  pmc: '1454165804606-c3d57bc86b40',
-  epc: '1486406146926-c627a92ad1ab',
+  pmc: '1524758631624-e2822e304c36',
+  epc: '1517248135467-4c7edcad34c4',
 }
 const img = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1000&q=80`
 
@@ -33,35 +31,24 @@ export default function Services() {
       />
       <PageHero
         breadcrumb="Services"
-        eyebrow="What we do"
+        eyebrow="Our services"
         title="End-to-end construction & design, under one roof"
         intro="Eight integrated services that cover every stage of your project — from the first concept sketch to the keys in your hand."
         image={HERO}
       />
 
-      {/* Overview grid */}
-      <section className="bg-cream-100 section-y relative overflow-hidden">
-        <BlueprintGrid className="opacity-[0.04]" />
-        <GlowBlob className="-right-28 top-16 h-80 w-80" />
-        <div className="container-px relative">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map((s, i) => (
-              <Reveal key={s.slug} delay={(i % 4) * 0.05}>
-                <a
-                  href={`#${s.slug}`}
-                  className="card-hover group flex h-full flex-col rounded-2xl border border-cream-300 bg-cream-50 p-6"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-900 text-brass-400 transition-colors group-hover:bg-brass-500 group-hover:text-teal-950">
-                    <Icon name={s.icon} className="h-6 w-6" />
-                  </span>
-                  <h3 className="mt-5 font-display text-base font-semibold leading-snug text-teal-900">
-                    {s.title.split(' (')[0]}
-                  </h3>
-                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brass-600">
-                    Details <Icon name="arrow" className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" strokeWidth={2} />
-                  </span>
-                </a>
-              </Reveal>
+      {/* Quick jump nav — anchors to each service section below */}
+      <section className="bg-cream-100 pt-12 sm:pt-16">
+        <div className="container-px">
+          <div className="flex flex-wrap justify-center gap-2.5">
+            {services.map((s) => (
+              <a
+                key={s.slug}
+                href={`#${s.slug}`}
+                className="rounded-full border border-cream-300 bg-cream-50 px-4 py-2 text-sm font-medium text-teal-900/80 transition-colors hover:border-brass-500 hover:text-brass-600"
+              >
+                {s.title.split(' (')[0]}
+              </a>
             ))}
           </div>
         </div>
@@ -116,8 +103,6 @@ export default function Services() {
           )
         })}
       </div>
-
-      <ProcessSection />
     </>
   )
 }

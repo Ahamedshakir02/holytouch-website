@@ -10,7 +10,7 @@ import CtaBand from '../sections/CtaBand'
 import Marquee from '../components/decor/Marquee'
 
 const marqueeItems = [
-  'Built on Trust, Delivered with Pride',
+  'Quality at Every Milestone',
   'One Accountable Team',
   'Transparent, Itemised Pricing',
   'On-Time, Snag-Free Handover',
