@@ -4,11 +4,10 @@ import SectionHeading from '../components/SectionHeading'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 import CtaBand from '../sections/CtaBand'
-import CountUp from '../components/CountUp'
 import BlueprintGrid from '../components/decor/BlueprintGrid'
 import GlowBlob from '../components/decor/GlowBlob'
 import CornerFrame from '../components/decor/CornerFrame'
-import { whyChoose, stats, orgStructure } from '../data/content'
+import { orgStructure } from '../data/content'
 
 // Construction site — building under construction (swap for a real Holytouch site photo).
 const HERO = 'https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?auto=format&fit=crop&w=1920&q=80'
@@ -151,20 +150,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="bg-cream-200 py-16">
-        <div className="container-px grid grid-cols-2 gap-8 lg:grid-cols-4">
-          {stats.map((s, i) => (
-            <Reveal key={s.label} delay={i * 0.08} className="text-center">
-              <p className="font-display text-4xl font-bold text-brass-600 sm:text-5xl">
-                <CountUp value={s.value} />
-              </p>
-              <p className="mt-2 text-sm text-teal-900/60">{s.label}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
       {/* Values */}
       <section className="bg-cream-100 section-y relative overflow-hidden">
         <BlueprintGrid className="opacity-[0.04]" />
@@ -184,30 +169,6 @@ export default function About() {
                 </span>
                 <h3 className="mt-5 font-display text-lg font-semibold text-teal-900">{v.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-teal-900/60">{v.text}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Trust differentiators */}
-      <section className="bg-cream-200 section-y">
-        <div className="container-px">
-          <SectionHeading
-            eyebrow="The trust difference"
-            title="Why clients choose to build with us"
-            intro="Four reasons homeowners and developers across Kerala put their trust in Holytouch."
-          />
-          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2">
-            {whyChoose.map((w, i) => (
-              <Reveal key={w.title} delay={i * 0.06} className="flex gap-4 rounded-2xl bg-cream-50 p-6">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-teal-900 text-brass-400">
-                  <Icon name={w.icon} className="h-6 w-6" />
-                </span>
-                <div>
-                  <h3 className="font-display text-base font-semibold text-teal-900">{w.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-teal-900/60">{w.text}</p>
-                </div>
               </Reveal>
             ))}
           </div>
