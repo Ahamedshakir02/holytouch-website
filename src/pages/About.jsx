@@ -151,7 +151,7 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="bg-cream-100 section-y relative overflow-hidden">
+      <section className="bg-cream-200 section-y relative overflow-hidden">
         <BlueprintGrid className="opacity-[0.04]" />
         <GlowBlob className="-left-28 bottom-10 h-80 w-80" />
         <div className="container-px relative">
